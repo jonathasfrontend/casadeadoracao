@@ -1,0 +1,111 @@
+.mobile-header{
+    display: none;
+}
+@media (max-width: 850px){
+    .main-header{
+        display: none;
+    }
+    .mobile-header{
+        display: flex;
+    }
+    .mobile-header .menu-icon .open,.close{
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        filter: invert(1);
+    }
+    .mobile-header .mobile{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #000000;
+        list-style: none;
+        text-align: center;
+        padding: 3em 6em;
+    }
+    .mobile-header .mobile li{
+        position: relative;
+        padding: 10px 20px;
+        margin: 8px 0;
+        background-color: #ffffff;
+    }
+    .mobile-header .mobile li a{
+        width: 100%;
+        text-decoration: none;
+        color: #000000;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .mobile-header .mobile .close{
+        position:fixed;
+        top: 25px;
+        right: 6em;
+    }
+    .main .texts h1{
+        font-size: 60px;
+        color: #ffffff;
+    }
+    
+}
+@media (max-width: 1000px){
+    .conte .cotent-times{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 1110px){
+    .projetos .container-projetos{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .projetos .container-projetos .card-projetos{
+        max-width: 100%;
+        min-width: 100%;
+    }
+}
+@media (max-width: 850px){
+    .projetos .container-projetos{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .projetos .container-projetos .card-projetos{
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .contato .container-contato{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .contato .container-contato .left{
+        width: 100%;
+        height: 100%;
+        padding: 2%;
+    }
+    .contato .container-contato .rigth{
+        width: 100%;
+        height: 100%;
+        padding: 2%;
+    }
+    .sobre,.projetos,.conte,.contato,.footer{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2%;
+        z-index: 100;
+    }
+}
+@media (max-width: 650px){
+    .conte .cotent-times{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 500px){
+    .conte .cotent-times{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

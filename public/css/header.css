@@ -1,0 +1,42 @@
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 6em;
+    z-index: 10000000;
+}
+header .desktop{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+header .logo h3{
+    color: #b1b1b1;
+    font-size: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+header .logo h3 span{
+    color: #ffffff;
+}
+header .desktop li{
+    margin: 0 5px;
+}
+header .desktop li a{
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 15px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+}
+header .desktop li a:hover{
+    background-color: #ffffff;
+    color: #000000;
+}

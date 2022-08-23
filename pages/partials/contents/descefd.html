@@ -1,0 +1,20 @@
+<main class="descricao">
+    <section class="container-descricao">
+        <h1><%= edf[0].Visao.title %></h1>
+        <h3><%= edf[0].Visao.sobre %></h3>
+        <%- edf[0].Visao.decricao %>
+        <h1><%= edf[0].Missao.title %></h1>
+        <p><%= edf[0].Missao.text %></p>
+
+        <div class="btn-opicao">
+            <a href="" class="btn-curso1">
+                <p><%= edf[0].Missao.type_curso_1 %></p>
+                <p><%= edf[0].Missao.inscricoes_close %></p>
+            </a>
+            <a href="<%= edf[0].link_curso %>" class="btn-curso2">
+                <p><%= edf[0].Missao.type_curso_2 %></p>
+                <p><%= edf[0].Missao.inscricoes_open %></p>
+            </a>
+        </div>
+    </section>
+</main>

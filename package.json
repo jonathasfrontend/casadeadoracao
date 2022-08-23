@@ -1,0 +1,30 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "Site casa de adoracao",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathasfrontend/casadeadoracao"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Jonathas",
+    "email": "jonathass5678@gmail.com",
+    "url": "https://jonathasportifolio.vercel.app/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "nodemon": "^2.0.19"
+  }
+}

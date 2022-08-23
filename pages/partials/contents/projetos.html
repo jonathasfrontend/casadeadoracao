@@ -1,0 +1,12 @@
+<main class="projetos">
+    <h1 class="tema">Projetos</h1>
+    <section class="container-projetos">
+        <% for(let i = 0; i < dataprojetos.length; i++) { %>
+            <div class="card-projetos">
+                <img src="<%= dataprojetos[i].img %>" alt="<%= dataprojetos[i].title %>">
+                <h3><%= dataprojetos[i].title %></h3>
+                <p><%= dataprojetos[i].sobre %></p>
+            </div>
+        <% } %>
+    </section>
+</main>

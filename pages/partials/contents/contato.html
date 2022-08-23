@@ -1,0 +1,31 @@
+<main class="contato">
+    <h1 class="tema">Contato</h1>
+    <div class="container-contato">
+        <div class="left">
+            <p><%= data_iniciosobre[0].contato.sobre %></p>
+            <div class="content-links">
+                <% for(let i = 0; i < contat.length; i++) { %>
+                    <a href="<%= contat[i].url %>"><img src="<%= contat[i].img %>" alt="<%= contat[i].title %>"><h4><%= contat[i].title %></h4></a>
+                <% } %>
+            </div>
+        </div>
+        <div class="rigth">                
+            <form action="https://api.staticforms.xyz/submit" method="post">
+                <div class="forminputs">
+                    <input type="text" name="name" placeholder="Nome">
+                    <input type="text" name="email" placeholder="Email" />
+                </div>
+                <input type="text" placeholder="Sua Objeção" required="" name="message">
+                <div class="formbtns">
+                    <input type="submit" value="Enviar">
+                    <input type="reset" value="Limpar">
+                </div>
+                <input type="text" name="honeypot" style="display:none">
+                <input type="hidden" name="accessKey" value="34137d04-3fc9-4f97-a089-4df80829bfbc">
+                <input type="hidden" name="subject" value="Voce tem uma nova menssagem do site!" />
+                <input type="hidden" name="replyTo" value="@">
+                <input type="hidden" name="redirectTo" value="/enviado">
+            </form>
+        </div>
+    </div>
+</main>

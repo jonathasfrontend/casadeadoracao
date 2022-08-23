@@ -1,0 +1,331 @@
+.main{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/fundo2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0 6em;
+    z-index: 100;
+}
+.main .texts{
+    max-width: 750px;
+    min-width: 100px;
+}
+.main .texts h1{
+    font-size: 85px;
+    color: #ffffff;
+}
+.main .texts h3{
+    font-weight: 400;
+    font-size: 36px;
+    color: #ffffff;
+}
+.main .texts h3 span{
+    color: #b1b1b1;
+}
+.main .texts .text-typing{
+    font-size: 40px;
+    color: #000000;
+    font-weight: 500;
+}
+
+/* ############################################################# */
+
+.sobre .container-sobre{
+    max-width: 1300px;
+    min-width: 400px;
+    height: 100%;
+    background: #00000062;
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 8px;
+    color: #ffffff;
+}
+.sobre .container-sobre h1{
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.sobre .container-sobre p{
+    font-size: 18px;
+    font-weight: 200;
+}
+
+/* ################################################## */
+
+.projetos .container-projetos{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+.projetos .container-projetos .card-projetos{
+    max-width: 373px;
+    min-width: 300px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #000000b4;
+    backdrop-filter: blur(20px);
+    border-radius: 6px;
+    padding: 20px 30px;
+    margin: 2px 0;
+    transition: 0.2s ease;
+    color: #ffffff;
+    text-align: center;
+}
+.projetos .container-projetos .card-projetos img{
+    width: 70px;
+    height: 70px;
+    color: rgb(220, 20, 60);
+    transition: color 0.3s ease;
+}
+.projetos .container-projetos .card-projetos h3{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+.projetos .container-projetos .card-projetos p{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px 0;
+}
+
+/* ##################################################### */
+
+.conte .cotent-times{
+    max-width: 100%;
+    min-width: 200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+.conte .cotent-times .card{
+    max-width: 400px;
+    min-width: 200px;
+    background: #000000b4;
+    backdrop-filter: blur(20px);
+    border-radius: 6px;
+    padding: 25px 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+    color: #ffffff;
+}
+.conte .cotent-times .card:hover{
+    background: #ffffff28;
+}
+.conte .cotent-times .card h2{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+.conte .cotent-times .card p{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+.conte .cotent-times .card img{
+    height: 160px;
+    width: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ffffff;
+    transition: 0.3s ease;
+}
+/* ############################################## */
+
+.contato .container-contato{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.contato .container-contato .left{
+    width: 50%;
+    height: 100%;
+}
+.contato .container-contato .left p{
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+.contato .container-contato .left .content-links{
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    width: calc(100% - 80%);
+}
+.contato .container-contato .left .content-links a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.contato .container-contato .left .content-links a img{
+    width: 25px;
+    height: 30px;
+    margin-right: 10px;
+    filter: invert(1);
+}
+.contato .container-contato .left .content-links a h4{
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+}
+.contato .container-contato .rigth{
+    width: 50%;
+    height: 100%;
+}
+.contato .container-contato .rigth form{
+    width: 100%;
+}
+.contato .container-contato .rigth form .forminputs{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.contato .container-contato .rigth form input{
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s ease;
+    margin: 5px 1%;
+}
+.contato .container-contato .rigth form input[type="submit"]{
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s ease;
+    margin: 5px 1%;
+}
+.contato .container-contato .rigth form input[type="reset"]{
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s ease;
+    margin: 5px 1%;
+}
+.contato .container-contato .rigth form .formbtns{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* ############################################################ */
+
+
+footer h3{
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* ####################################################################################################### */
+/* escola de fundamentos */
+/* ####################################################################################################### */
+
+.descricao{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+.descricao .container-descricao{
+    width: 90%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.384);
+    backdrop-filter: blur(10px);
+    padding: 4% 80px;
+    border-radius: 10px;
+}
+.descricao .container-descricao h1{
+    font-size: 30px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+.descricao .container-descricao h3{
+    font-size: 18px;
+    font-weight: 500;
+}
+.descricao .container-descricao p{
+    font-size: 18px;
+    font-weight: 500;
+}
+.descricao .container-descricao ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.descricao .container-descricao ul li{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 1% 0;
+    list-style:circle;
+    list-style-position: inside;
+}
+.descricao .container-descricao .btn-opicao{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+.descricao .container-descricao .btn-opicao .btn-curso1{
+    padding: 13px 0;
+    margin: 10px;
+    background-color: #ff1b1b;
+    width: 13em;
+    height: 4em;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+}
+.descricao .container-descricao .btn-opicao .btn-curso2{
+    padding: 13px 0;
+    margin: 10px;
+    background-color: #28b900;
+    width: 13em;
+    height: 4em;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+}
