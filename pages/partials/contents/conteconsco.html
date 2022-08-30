@@ -3,7 +3,7 @@
     <div class="cotent-times">
         <% for(let i = 0; i < data_cont.length; i++) { %>
             <div class="card">
-                <img src="<%= data_cont[i].img_url %>" alt="">
+                <img src="<%= data_cont[i].img_url %>" alt="<%= data_cont[i].nome %>">
                 <h2><%= data_cont[i].nome %></h2>
                 <p><%= data_cont[i].type %></p>
             </div>

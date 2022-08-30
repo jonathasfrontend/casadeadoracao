@@ -40,7 +40,7 @@
     min-width: 400px;
     height: 100%;
     background: #00000062;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(8px);
     padding: 30px;
     border-radius: 8px;
     color: #ffffff;
@@ -72,7 +72,7 @@
     flex-direction: column;
     align-items: center;
     background: #000000b4;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(8px);
     border-radius: 6px;
     padding: 20px 30px;
     margin: 2px 0;
@@ -110,7 +110,7 @@
     max-width: 400px;
     min-width: 200px;
     background: #000000b4;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(8px);
     border-radius: 6px;
     padding: 25px 35px;
     text-align: center;
@@ -252,22 +252,15 @@ footer h3{
 /* escola de fundamentos */
 /* ####################################################################################################### */
 
-.descricao{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-}
 .descricao .container-descricao{
-    width: 90%;
+    max-width: 1300px;
+    min-width: 400px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.384);
-    backdrop-filter: blur(10px);
-    padding: 4% 80px;
-    border-radius: 10px;
+    background: #00000062;
+    backdrop-filter: blur(8px);
+    padding: 30px;
+    border-radius: 8px;
+    color: #ffffff;
 }
 .descricao .container-descricao h1{
     font-size: 30px;
@@ -308,7 +301,7 @@ footer h3{
     margin: 10px;
     background-color: #ff1b1b;
     width: 13em;
-    height: 4em;
+    height: 100%;
     font-size: 18px;
     font-weight: 700;
     border-radius: 5px;
@@ -321,11 +314,49 @@ footer h3{
     margin: 10px;
     background-color: #28b900;
     width: 13em;
-    height: 4em;
+    height: 100%;
     font-size: 18px;
     font-weight: 700;
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
     text-decoration: none;
+}
+
+/* ################################# */
+
+.containe-desq-edf{
+    max-width: 100%;
+    min-width: 400px;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #00000062;
+    backdrop-filter: blur(8px);
+    padding: 30px;
+    border-radius: 0 0 50% 50%;
+    color: #ffffff;
+}
+.containe-desq-edf .img-container{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containe-desq-edf .img-container img{
+    width: 30em;
+    height: auto;
+}
+.containe-desq-edf .objetivo{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containe-desq-edf .objetivo h4{
+    font-size: 18px;
+    font-weight: 500;
 }

@@ -84,7 +84,8 @@ app.get('/escoladefundamentos',async (req, res) => {
                     Desenvolvimento: val.Desenvolvimento,
                     Modulos: val.Modulos,
                     Mestres: val.Mestres,
-                    link_curso: val.link_curso
+                    link_curso: val.link_curso,
+                    objetivo: val.objetivo
                 }
             })
                 res.render('edf',{data_iniciosobre:iniciosobre,contat:linkscontato,edf:edfcontent});
@@ -94,5 +95,5 @@ app.get('/escoladefundamentos',async (req, res) => {
 })
 
 app.listen(process.env.PORT || 3000,()=>{
-    console.log('server rodando');
+    console.log('server rodando na porta 3000');
 })

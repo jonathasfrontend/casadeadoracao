@@ -43,7 +43,10 @@ body{
     border-bottom: 3px solid #ffffff;
 }
 
-.sobre,.projetos,.conte,.contato,.footer{
+/* pagina inicial */
+.sobre,.projetos,.conte,.contato,.footer,
+/* escola de fundamentos */
+.descricao{
     width: 100%;
     height: 100%;
     display: flex;

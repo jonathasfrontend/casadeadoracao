@@ -5,11 +5,21 @@
 </head>
 <body>
     <%- include('./partials/contents/header.html') %>
+
+    <main class="containe-desq-edf">
+        <div class="img-container">
+            <img src="../public/img/new/edf.png " alt="imagem escola de fundamentos">
+        </div>
+        <div class="objetivo">
+            <h4><%- edf[0].objetivo %></h4>
+        </div>
+    </main>
+
     <%- include('./partials/contents/descefd.html') %>
 
     <%- include('./partials/contents/contato.html') %>
     <%- include('./partials/contents/footer.html') %>
 
-    <script src="../public/js/video.js"></script>
+    <script src="../public/js/main.js"></script>
 </body>
 </html>

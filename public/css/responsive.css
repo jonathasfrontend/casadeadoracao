@@ -8,11 +8,21 @@
     .mobile-header{
         display: flex;
     }
-    .mobile-header .menu-icon .open,.close{
+    .mobile-header .open{
         width: 25px;
         height: 25px;
         cursor: pointer;
         filter: invert(1);
+        top: 25px;
+        right: 6em;
+    }
+    .mobile-header .close{
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        position:fixed;
+        top: 25px;
+        right: 6em;
     }
     .mobile-header .mobile{
         display: none;
@@ -39,11 +49,11 @@
         font-size: 20px;
         font-weight: 500;
     }
-    .mobile-header .mobile .close{
+    /* .mobile-header .mobile .close{
         position:fixed;
         top: 25px;
         right: 6em;
-    }
+    } */
     .main .texts h1{
         font-size: 60px;
         color: #ffffff;
