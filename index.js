@@ -34,7 +34,8 @@ app.get('/',async (req, res) => {
                 return {
                     img: val.img,
                     title: val.title,
-                    sobre: val.sobre
+                    sobre: val.sobre,
+                    url: val.url
                 }
             })
             axios.get(process.env.URL_API_CONTECONOSCO).then(function(data){
@@ -88,7 +89,16 @@ app.get('/escoladefundamentos',async (req, res) => {
                     objetivo: val.objetivo
                 }
             })
-                res.render('edf',{data_iniciosobre:iniciosobre,contat:linkscontato,edf:edfcontent});
+                axios.get(process.env.URL_API_EDFMESTRES).then(function(data){
+                    var edfmestres = data.data.map(function(val){
+                        return{
+                            nome: val.nome,
+                            denominacao: val.denominacao,
+                            avatar: val.avatar
+                        }
+                    })
+                    res.render('edf',{data_iniciosobre:iniciosobre, contat:linkscontato, edf:edfcontent, edfmestres});
+                })
             })
         })
     })

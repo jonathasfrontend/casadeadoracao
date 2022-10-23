@@ -5,13 +5,30 @@
 </head>
 <body>
 
-    <%- include('./partials/contents/header.html') %>
-    <%- include('./partials/contents/main.html') %>
-    <%- include('./partials/contents/sobre.html') %>
-    <%- include('./partials/contents/projetos.html') %>
-    <%- include('./partials/contents/conteconsco.html') %>
-    <%- include('./partials/contents/contato.html') %>
-    <%- include('./partials/contents/footer.html') %>
+    <%- include('./partials/components/header.html') %>
+    <%- include('./partials/components/main.html') %>
+    <%- include('./partials/components/sobre.html') %>
+    <%- include('./partials/components/projetos.html') %>
+    <%- include('./partials/components/conteconsco.html') %>
+    <%- include('./partials/components/contato.html') %>
+    <%- include('./partials/components/footer.html') %>
+    
     <script src="../public/js/main.js"></script>
+    <script>
+        var link_ = document.getElementById('link_');
+        link_.addEventListener('click', (e)=>{
+            e.preventDefault();
+        })
+        const openMenu = document.querySelector('.mobile');
+        const btnOpen = document.querySelector('.open');
+        const btnClose = document.querySelector('.close');
+
+        btnOpen.addEventListener('click', function() {
+            openMenu.style.display = 'block';
+        })
+        btnClose.addEventListener('click', function() {
+            openMenu.style.display = 'none';
+        })
+     </script>
 </body>
 </html>

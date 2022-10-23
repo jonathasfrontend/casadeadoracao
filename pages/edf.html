@@ -4,7 +4,7 @@
     <%- include('partials/head.html') %>
 </head>
 <body>
-    <%- include('./partials/contents/header.html') %>
+    <%- include('./partials/components/header.html') %>
 
     <main class="containe-desq-edf">
         <div class="img-container">
@@ -15,11 +15,36 @@
         </div>
     </main>
 
-    <%- include('./partials/contents/descefd.html') %>
+    <%- include('./partials/components/descefd.html') %>
 
-    <%- include('./partials/contents/contato.html') %>
-    <%- include('./partials/contents/footer.html') %>
+    <main class="container-mestres">
+        <% for(let i = 0; i < edfmestres.length; i++) { %>
+            <div class="card-mestres">
+                <div class="img">
+                    <img src="<%= edfmestres[i].avatar %>" alt="">
+                </div>
+                <div class="text">
+                    <h1><%= edfmestres[i].nome %></h1>
+                    <p><%= edfmestres[i].denominacao %></p>
+                </div>
+            </div>
+        <% } %>
+    </main>
 
-    <script src="../public/js/main.js"></script>
+    <%- include('./partials/components/contato.html') %>
+    <%- include('./partials/components/footer.html') %>
+
+    <script>
+        const openMenu = document.querySelector('.mobile');
+        const btnOpen = document.querySelector('.open');
+        const btnClose = document.querySelector('.close');
+
+        btnOpen.addEventListener('click', function() {
+            openMenu.style.display = 'block';
+        })
+        btnClose.addEventListener('click', function() {
+            openMenu.style.display = 'none';
+        })
+    </script>
 </body>
 </html>

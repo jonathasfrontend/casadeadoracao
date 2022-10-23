@@ -37,7 +37,7 @@
 
 .sobre .container-sobre{
     max-width: 1300px;
-    min-width: 400px;
+    min-width: 350px;
     height: 100%;
     background: #00000062;
     backdrop-filter: blur(8px);
@@ -65,20 +65,21 @@
     grid-gap: 20px;
 }
 .projetos .container-projetos .card-projetos{
-    max-width: 373px;
-    min-width: 300px;
-    height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    max-width: 373px;
+    min-width: 300px;
+    height: 320px;
     background: #000000b4;
     backdrop-filter: blur(8px);
     border-radius: 6px;
     padding: 20px 30px;
-    margin: 2px 0;
-    transition: 0.2s ease;
     color: #ffffff;
     text-align: center;
+    text-decoration: none;
+    overflow: hidden;
 }
 .projetos .container-projetos .card-projetos img{
     width: 70px;
@@ -95,20 +96,29 @@
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 20px 0;
+    text-align: justify;
+}
+.projetos .container-projetos .card-projetos a{
+    text-decoration:none;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 20px 0;
 }
 
 /* ##################################################### */
 
 .conte .cotent-times{
-    max-width: 100%;
-    min-width: 200px;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
 }
 .conte .cotent-times .card{
-    max-width: 400px;
-    min-width: 200px;
+    width: 100%;
     background: #000000b4;
     backdrop-filter: blur(8px);
     border-radius: 6px;
@@ -158,6 +168,7 @@
     font-size: 16px;
     font-weight: 500;
     color: #ffffff;
+    text-align: justify;
     font-family: 'Poppins', sans-serif;
 }
 .contato .container-contato .left .content-links{
@@ -253,8 +264,9 @@ footer h3{
 /* ####################################################################################################### */
 
 .descricao .container-descricao{
-    max-width: 1300px;
-    min-width: 400px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 350px;
     height: 100%;
     background: #00000062;
     backdrop-filter: blur(8px);
@@ -322,19 +334,65 @@ footer h3{
     cursor: pointer;
     text-decoration: none;
 }
+.descricao .container-descricao .desenvolvimento{
+    font-size: 20px;
+    font-weight: 800;
+}
+.container-mestres{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 20px 6em;
+    z-index: 100;
+}
+.container-mestres .card-mestres{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    min-width: 250px;
+    height: 100%;
+    background: #00000062;
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    border-radius: 10px;
+}
+.container-mestres .card-mestres .img img{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+}
+.container-mestres .card-mestres .text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.container-mestres .card-mestres .text h1{
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+.container-mestres .card-mestres .text p{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
 
 /* ################################# */
 
 .containe-desq-edf{
     max-width: 100%;
-    min-width: 400px;
-    height: 55vh;
+    min-width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #00000062;
     backdrop-filter: blur(8px);
-    padding: 30px;
+    padding: 4em 3em;
     border-radius: 0 0 50% 50%;
     color: #ffffff;
 }
@@ -359,4 +417,6 @@ footer h3{
 .containe-desq-edf .objetivo h4{
     font-size: 18px;
     font-weight: 500;
+    align-items: center;
+    text-align: justify;
 }

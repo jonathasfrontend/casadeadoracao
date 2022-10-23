@@ -2,11 +2,18 @@
     <h1 class="tema">Projetos</h1>
     <section class="container-projetos">
         <% for(let i = 0; i < dataprojetos.length; i++) { %>
-            <div class="card-projetos">
+            <div class="card-projetos" id="cardProjetos">
                 <img src="<%= dataprojetos[i].img %>" alt="<%= dataprojetos[i].title %>">
                 <h3><%= dataprojetos[i].title %></h3>
                 <p><%= dataprojetos[i].sobre %></p>
+
+                <% if (!dataprojetos[i].url) { %>
+                    <a id="link_" style="cursor: no-drop;" href="<%= dataprojetos[i].url %>">Assesar</a>                 
+                <%} else { %>
+                    <a id="link_" style="cursor: pointer;" href="<%= dataprojetos[i].url %>">Assesar</a>       
+                <% } %>
             </div>
         <% } %>
     </section>
 </main>
+
