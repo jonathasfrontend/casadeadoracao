@@ -60,6 +60,7 @@ app.get('/',async (req, res) => {
     })
 })
 })
+
 app.get('/escoladefundamentos',async (req, res) => {
     await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
         var iniciosobre = data.data.map(function(val){

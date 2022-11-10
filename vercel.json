@@ -1,16 +1,22 @@
 {
-    "version":2,
-    "builds":[
-         {
-                "src":"./index.js",
-                "use":"@vercel/node"
-         }
-    ],
+     "version":2,
+     "builds":[
+          {
+               "src":"./index.js",
+               "use":"@vercel/node"
+          }
+     ],
 
-    "routes":[
-         {
+     "routes":[
+          {
                "src":"/(.*)",
-                "dest":"/"
-        }
-        ]
+               "dest":"/"
+          },
+          {
+               "handle": "filesystem" 
+          },
+          {
+               "src": "/(.*)", "status": 404, "dest": "/other-404.html" 
+          }
+     ]
 }
