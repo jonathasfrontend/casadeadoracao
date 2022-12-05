@@ -231,14 +231,14 @@
         background-image: url('../img/fundo2mobile.png');
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 100% 100%;
         background-attachment: fixed;
     }
     body{
         background-image: url('../img/fundomobile.png');
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 100% 100%;
         background-attachment: fixed;
     }
     .conte .cotent-times{
