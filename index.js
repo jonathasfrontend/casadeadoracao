@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const path = require('path');
 const fileUpload = require('express-fileupload');
 const axios = require('axios');
 
 const app = express();
+app.use(session({secret: '0978hiutg978yge9r76fgnfgb89',}))
 
 app.use(fileUpload({
     useTempFiles : true,
@@ -19,6 +21,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, '/pages'));
+
 
 app.get('/',async (req, res) => {
     await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
@@ -104,6 +107,108 @@ app.get('/escoladefundamentos',async (req, res) => {
         })
     })
 })
+
+var usuarios = [
+    {
+        nome: 'Jonathas',
+        email: 'jonathass5678@gmail.com',
+        senha: '@Jona20182293325',
+    }
+]
+
+app.post('/admin', async (req,res)=>{
+    await usuarios.map(function(val){
+        if(val.email == req.body.login && val.senha == req.body.senha){
+
+            axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
+                var iniciosobre = data.data.map(function(val){
+                    return {
+                        inicio: val.inicio,
+                        sobre: val.sobre,
+                        contato: val.contato
+                    }
+                })
+                axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
+                    var linkscontato = data.data.map(function(val){
+                        return {
+                            img: val.img,
+                            title: val.title,
+                            url: val.url
+                        }
+                    })
+                    res.render('logado',{data_iniciosobre:iniciosobre, contat:linkscontato, nome:val.nome});
+                })
+            })
+
+        }else{
+           axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
+                var iniciosobre = data.data.map(function(val){
+                    return {
+                        inicio: val.inicio,
+                        sobre: val.sobre,
+                        contato: val.contato
+                    }
+                })
+                axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
+                    var linkscontato = data.data.map(function(val){
+                        return {
+                            img: val.img,
+                            title: val.title,
+                            url: val.url
+                        }
+                    })
+                    res.render('login',{data_iniciosobre:iniciosobre, contat:linkscontato});
+                })
+            })
+        }
+    })
+})
+
+app.get('/admin', async (req,res)=>{
+    if(req.session.email == null){
+        await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
+            var iniciosobre = data.data.map(function(val){
+                return {
+                    inicio: val.inicio,
+                    sobre: val.sobre,
+                    contato: val.contato
+                }
+            })
+            axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
+                var linkscontato = data.data.map(function(val){
+                    return {
+                        img: val.img,
+                        title: val.title,
+                        url: val.url
+                    }
+                })
+                res.render('login',{data_iniciosobre:iniciosobre, contat:linkscontato});
+            })
+        })
+    }else{
+        
+        await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
+            var iniciosobre = data.data.map(function(val){
+                return {
+                    inicio: val.inicio,
+                    sobre: val.sobre,
+                    contato: val.contato
+                }
+            })
+            axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
+                var linkscontato = data.data.map(function(val){
+                    return {
+                        img: val.img,
+                        title: val.title,
+                        url: val.url
+                    }
+                })
+                res.render('logado',{data_iniciosobre:iniciosobre, contat:linkscontato, nome:val.nome});
+            })
+        })
+
+    }
+});
 
 app.use(function(req, res, next) {
     res.status(404).render('404');

@@ -26,5 +26,8 @@
     "express": "^4.18.1",
     "express-fileupload": "^1.4.0",
     "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "express-session": "^1.17.3"
   }
 }

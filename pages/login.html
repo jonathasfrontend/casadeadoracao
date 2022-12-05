@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <%- include('partials/head.html') %>
+</head>
+<body>
+    <%- include('./partials/components/header.html') %>
+
+    <div class="form-content">
+        <form action="" method="post">
+            <h1>Logar</h1>
+            <input type="text" placeholder="Email" name="login">
+            <input type="text" placeholder="Senha" name="senha">
+            <input type="submit" name="acao" value="Logar">
+        </form>
+    </div>
+
+    <%- include('./partials/components/contato.html') %>
+    <%- include('./partials/components/footer.html') %>
+
+    <script>
+        var link_ = document.getElementById('link_');
+        link_.addEventListener('click', (e)=>{
+            e.preventDefault();
+        })
+        const openMenu = document.querySelector('.mobile');
+        const btnOpen = document.querySelector('.open');
+        const btnClose = document.querySelector('.close');
+
+        btnOpen.addEventListener('click', function() {
+            openMenu.style.display = 'block';
+        })
+        btnClose.addEventListener('click', function() {
+            openMenu.style.display = 'none';
+        })
+     </script>
+</body>
+</html>
