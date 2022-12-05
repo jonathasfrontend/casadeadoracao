@@ -226,21 +226,6 @@
     }
 }
 @media (max-width: 500px){
-    .main{
-
-        background-image: url('../img/fundo2mobile.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-attachment: fixed;
-    }
-    body{
-        background-image: url('../img/fundomobile.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-attachment: fixed;
-    }
     .conte .cotent-times{
         grid-template-columns: repeat(1, 1fr);
     }
