@@ -136,7 +136,7 @@ app.post('/admin', async (req,res)=>{
                             url: val.url
                         }
                     })
-                    res.render('logado',{data_iniciosobre:iniciosobre, contat:linkscontato, nome:val.nome});
+                    res.render('logado',{data_iniciosobre:iniciosobre, contat:linkscontato});
                 })
             })
 
@@ -203,7 +203,7 @@ app.get('/admin', async (req,res)=>{
                         url: val.url
                     }
                 })
-                res.render('logado',{data_iniciosobre:iniciosobre, contat:linkscontato, nome:val.nome});
+                res.render('logado',{data_iniciosobre:iniciosobre, contat:linkscontato});
             })
         })
 
