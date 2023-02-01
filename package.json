@@ -7,10 +7,6 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jonathasfrontend/casadeadoracao"
-  },
   "keywords": [],
   "author": {
     "name": "Jonathas",
