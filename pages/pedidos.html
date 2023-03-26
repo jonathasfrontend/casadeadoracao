@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('partials/head.html') %>
+    <title>Casa de Adoração</title>
+</head>
+<body>
+    <%- include('./partials/components/header.html') %>
+
+    <main class="pedido">
+      <!-- <h1 class="tema">Pedidos</h1> -->
+      <section class="container-pedido">
+          <% for(let i = 0; i < pedidositems.length; i++) { %>
+              <div class="card-pedido" id="cardpedido">
+                  <h3><%= pedidositems[i].name %></h3>
+                  <p><%= pedidositems[i].pedido %></p>
+                  <div class="card-botoom-pedido">
+
+                      <span><%= pedidositems[i].telefone %></span>
+                      <span><%= pedidositems[i].createdAt %></span>
+                  </div>
+              </div>
+          <% } %>
+      </section>
+
+      <form method="POST" action="/pedidosdeoracao">
+        <h1>Faça seu pedido de oração aqui em baixo!</h1>
+        <input type="text" name="name" id="" placeholder="Nome">
+        <input type="text" name="telefone" id="" placeholder="Telefone">
+        <textarea name="pedido" id="" placeholder="Seu Pedido" cols="30" rows="10"></textarea>
+        <input type="submit" value="Enviar">
+      </form>
+
+    </main>
+    <%- include('./partials/components/footer.html') %>
+
+    <script>
+        const openMenu = document.querySelector('.mobile');
+        const btnOpen = document.querySelector('.open');
+        const btnClose = document.querySelector('.close');
+
+        btnOpen.addEventListener('click', function() {
+            openMenu.style.display = 'block';
+        })
+        btnClose.addEventListener('click', function() {
+            openMenu.style.display = 'none';
+        })
+    </script>
+</body>
+</html>

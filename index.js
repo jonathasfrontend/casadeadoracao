@@ -108,6 +108,38 @@ app.get('/escoladefundamentos',async (req, res) => {
     })
 })
 
+app.get('/pedidosdeoracao',async (req, res) => {
+    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
+        var iniciosobre = data.data.map(function(val){
+            return {
+                inicio: val.inicio,
+                sobre: val.sobre,
+                contato: val.contato
+            }
+        })
+        axios.get(process.env.URL_PEDIDOS_GET_MONGODB).then(function(data){
+        var pedidoscdaoracao = data.data.map(function(val){
+            return {
+                name: val.name,
+                telefone: val.telefone,
+                pedido: val.pedido,
+                createdAt: val.createdAt,
+            }
+        })
+            res.render('pedidos',{data_iniciosobre:iniciosobre,pedidositems:pedidoscdaoracao});
+        })
+    })
+})
+
+app.post('/pedidosdeoracao',async (req, res) => {
+    const data = {
+        name: req.body.name,
+        telefone: req.body.telefone,
+        pedido: req.body.pedido,
+      };
+      await axios.post(process.env.URL_PEDIDOS_POST_MONGODB, data)
+})
+
 var usuarios = [
     {
         nome: 'Jonathas',

@@ -36,6 +36,17 @@ header .desktop li a{
     transition-duration: 0.3s;
     border-radius: 10px;
 }
+header .desktop li .M1{
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px 15px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+}
 header .desktop li a:hover{
     background-color: #ffffff;
     color: #000000;
