@@ -48,7 +48,7 @@
   margin: 10px 0;
 }
 .pedido form h1{
-  font-size: 18px;
+  font-size: 22px;
   margin-left: 15px;
   color: #ffffff;
 }
@@ -82,6 +82,7 @@
   font-size: 17px;
   font-family: 'Poppins', sans-serif;
   transition: 0.3s ease;
+  cursor: pointer;
 }
 .pedido form textarea{
   width: 100%;
