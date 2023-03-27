@@ -117,17 +117,7 @@ app.get('/pedidosdeoracao',async (req, res) => {
                 contato: val.contato
             }
         })
-        axios.get(process.env.URL_PEDIDOS_GET_MONGODB).then(function(data){
-        var pedidoscdaoracao = data.data.map(function(val){
-            return {
-                name: val.name,
-                telefone: val.telefone,
-                pedido: val.pedido,
-                createdAt: val.createdAt,
-            }
-        })
-            res.render('pedidos',{data_iniciosobre:iniciosobre,pedidositems:pedidoscdaoracao});
-        })
+            res.render('pedidos',{data_iniciosobre:iniciosobre});
     })
 })
 
@@ -138,6 +128,29 @@ app.post('/pedidosdeoracao',async (req, res) => {
         pedido: req.body.pedido,
       };
       await axios.post(process.env.URL_PEDIDOS_POST_MONGODB, data)
+})
+
+app.get('/oracoes', async (req, res) =>{
+    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
+        var iniciosobre = data.data.map(function(val){
+            return {
+                inicio: val.inicio,
+                sobre: val.sobre,
+                contato: val.contato
+            }
+        })
+        axios.get(process.env.URL_PEDIDOS_GET_MONGODB).then(function(data){
+        var pedidoscdaoracao = data.data.map(function(val){
+            return {
+                name: val.name,
+                telefone: val.telefone,
+                pedido: val.pedido,
+                createdAt: val.createdAt,
+            }
+        })
+            res.render('oracoes',{data_iniciosobre:iniciosobre,pedidositems:pedidoscdaoracao});
+    })
+    })
 })
 
 var usuarios = [
