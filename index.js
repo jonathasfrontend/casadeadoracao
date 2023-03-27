@@ -140,6 +140,7 @@ app.get('/oracoes', async (req, res) =>{
             }
         })
         axios.get(process.env.URL_PEDIDOS_GET_MONGODB).then(function(data){
+        data.data.reverse();
         var pedidoscdaoracao = data.data.map(function(val){
             return {
                 name: val.name,
