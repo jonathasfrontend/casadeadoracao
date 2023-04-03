@@ -127,7 +127,21 @@ app.post('/pedidosdeoracao',async (req, res) => {
         telefone: req.body.telefone,
         pedido: req.body.pedido,
       };
-      await axios.post(process.env.URL_PEDIDOS_POST_MONGODB, data)
+      await axios.post(process.env.URL_PEDIDOS_POST_MONGODB, data);
+      res.redirect('/pedidoenviado')
+})
+
+app.get('/pedidoenviado', async (req, res) =>{
+    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
+        var iniciosobre = data.data.map(function(val){
+            return {
+                inicio: val.inicio,
+                sobre: val.sobre,
+                contato: val.contato
+            }
+        })
+        res.render('confirmed',{data_iniciosobre:iniciosobre});
+    })
 })
 
 app.get('/oracoes', async (req, res) =>{
