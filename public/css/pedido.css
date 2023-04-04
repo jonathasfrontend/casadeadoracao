@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   max-width: 100%;
   min-width: 200px;
   height: 100%;
@@ -45,6 +44,17 @@
   font-weight: 500;
   margin: 10px 0;
 }
+.pedido .container-pedido .card-pedido a{
+  background-color: #ff0000;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
 .pedido form h1{
   font-size: 22px;
   margin-left: 15px;

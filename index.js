@@ -155,15 +155,17 @@ app.get('/oracoes', async (req, res) =>{
         })
         axios.get(process.env.URL_PEDIDOS_GET_MONGODB).then(function(data){
         data.data.reverse();
+        const urlDelet = "https://serverpedidoscda.vercel.app/deletaroracao";
         var pedidoscdaoracao = data.data.map(function(val){
             return {
+                id: val._id,
                 name: val.name,
                 telefone: val.telefone,
                 pedido: val.pedido,
                 createdAt: val.createdAt,
             }
         })
-            res.render('oracoes',{data_iniciosobre:iniciosobre,pedidositems:pedidoscdaoracao});
+            res.render('oracoes',{data_iniciosobre:iniciosobre,pedidositems:pedidoscdaoracao,deletar:urlDelet});
     })
     })
 })
