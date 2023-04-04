@@ -75,7 +75,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 20px 1em;
+        padding: 20px 1em !important;
         z-index: 100;
     }
     .container-mestres{
@@ -250,7 +250,7 @@
 }
 @media (max-width: 610px){
 .pedido .container-pedido{
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
 }
 .pedido .container-pedido .card-pedido{
     max-width: 100%;
