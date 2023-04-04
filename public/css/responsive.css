@@ -3,62 +3,62 @@
 }
 @media (max-width: 1040px){
     .main-header{
-        display: none;
+        display: none !important;
     }
     .mobile-header{
-        display: flex;
+        display: flex ;
     }
     .mobile-header .open{
-        width: 25px;
-        height: 25px;
-        cursor: pointer;
-        filter: invert(1);
-        top: 25px;
-        right: 6em;
+        width: 25px ;
+        height: 25px ;
+        cursor: pointer ;
+        filter: invert(1) ;
+        top: 25px ;
+        right: 6em ;
     }
     .mobile-header .close{
-        width: 25px;
-        height: 25px;
-        cursor: pointer;
-        position:fixed;
-        top: 25px;
-        right: 6em;
+        width: 25px ;
+        height: 25px ;
+        cursor: pointer ;
+        position:fixed ;
+        top: 25px ;
+        right: 6em ;
     }
     .mobile-header .mobile{
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: #000000;
-        list-style: none;
-        text-align: center;
-        padding: 3em 6em;
+        display: none ;
+        position: fixed ;
+        top: 0 ;
+        left: 0 ;
+        width: 100% ;
+        height: 100vh ;
+        background-color: #000000 ;
+        list-style: none ;
+        text-align: center ;
+        padding: 3em 6em ;
     }
     .mobile-header .mobile li{
-        position: relative;
-        padding: 10px 20px;
-        margin: 8px 0;
-        background-color: #ffffff;
+        position: relative !important;
+        padding: 10px 20px !important;
+        margin: 8px 0 !important;
+        background-color: #ffffff !important;
     }
     .mobile-header .mobile li a{
-        width: 100%;
-        text-decoration: none;
-        color: #000000;
-        font-size: 20px;
-        font-weight: 500;
+        width: 100% !important;
+        text-decoration: none !important;
+        color: #000000 !important;
+        font-size: 20px !important;
+        font-weight: 500 !important;
     }
     .main .texts h1{
-        font-size: 60px;
-        color: #ffffff;
+        font-size: 60px !important;
+        color: #ffffff !important;
     }
     .pedido .container-pedido{
         grid-template-columns: repeat(3, 1fr) !important;
       }
     .pedido .container-pedido .card-pedido{
-        max-width: 100%;
-        min-width: 100%;
+        max-width: 100% !important;
+        min-width: 100% !important;
     }
     
 }
@@ -69,178 +69,178 @@
     .descricao
     /* pedido de oração */
     .pedido{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
         padding: 20px 1em !important;
-        z-index: 100;
+        z-index: 100 !important;
     }
     .container-mestres{
-        width: 100%;
-        height: 100%;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 20px;
-        padding: 20px 1em;
-        z-index: 100;
+        width: 100% !important;
+        height: 100% !important;
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        grid-gap: 20px !important;
+        padding: 20px 1em !important;
+        z-index: 100 !important;
     }
     .main{
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 100vh;
-        background-image: url('../img/fundo2.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        padding: 0 1em;
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background-image: url('../img/fundo2.png') !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        background-attachment: fixed !important;
+        padding: 0 1em !important;
     }
     header{
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 20px 1em;
-        z-index: 10000000;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        padding: 20px 1em !important;
+        z-index: 10000000 !important;
     }
     .main .texts h1{
-        font-size: 40px;
-        color: #ffffff;
+        font-size: 40px !important;
+        color: #ffffff !important;
     }
     .main .texts h3{
-        font-weight: 400;
-        font-size: 20px;
-        color: #ffffff;
+        font-weight: 400 !important;
+        font-size: 20px !important;
+        color: #ffffff !important;
     }
     .main .texts h3 span{
-        color: #b1b1b1;
+        color: #b1b1b1 !important;
     }
     .pedido .container-pedido{
         grid-template-columns: 1fr !important;
     }
     .pedido .container-pedido .card-pedido{
-        max-width: 100%;
-        min-width: 100%;
+        max-width: 100% !important;
+        min-width: 100% !important;
     }
 }
 @media (max-width: 1250px){
     .container-mestres{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 20px;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        grid-gap: 20px !important;
     }
 }
 @media (max-width: 986px){
     .container-mestres{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 20px;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-gap: 20px !important;
     }
 }
 @media (max-width: 720px){
     .container-mestres{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 20px;
+        display: grid !important;
+        grid-template-columns: repeat(1, 1fr) !important;
+        grid-gap: 20px !important;
     }
 }
 @media (max-width: 1020px){
     .containe-desq-edf{
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 6em 3em;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 6em 3em !important;
         border-radius: 0 0 40% 40%
     }
     .containe-desq-edf .img-container{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
     .containe-desq-edf .objetivo{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
     .containe-desq-edf .img-container img{
-        max-width: 30em;
-        min-width: 20em;
-        height: auto;
+        max-width: 30em !important;
+        min-width: 20em !important;
+        height: auto !important;
     }
 }
 @media (max-width: 1140px){
     .conte .cotent-times{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr) !important;
     }
 }
 @media (max-width: 1110px){
     .projetos .container-projetos{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
     }
     .projetos .container-projetos .card-projetos{
-        max-width: 100%;
-        min-width: 100%;
+        max-width: 100% !important;
+        min-width: 100% !important;
     }
 }
 @media (max-width: 850px){
     .projetos .container-projetos{
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr) !important;
     }
     .projetos .container-projetos .card-projetos{
-        max-width: 100%;
-        min-width: 100%;
+        max-width: 100% !important;
+        min-width: 100% !important;
     }
     .contato .container-contato{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     .contato .container-contato .left{
-        width: 100%;
-        height: 100%;
-        padding: 2%;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 2% !important;
     }
     .contato .container-contato .rigth{
-        width: 100%;
-        height: 100%;
-        padding: 2%;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 2% !important;
     }
     .sobre,.projetos,.conte,.contato,.footer,.pedido{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2%;
-        z-index: 100;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 2% !important;
+        z-index: 100 !important;
     }
     .pedido .container-pedido{
         grid-template-columns: repeat(2, 1fr) !important;
     }
     .pedido .container-pedido .card-pedido{
-        max-width: 100%;
-        min-width: 100%;
+        max-width: 100% !important;
+        min-width: 100% !important;
     }
 }
 @media (max-width: 740px){
     .conte .cotent-times{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 }
 @media (max-width: 500px){
@@ -250,10 +250,10 @@
 }
 @media (max-width: 610px){
 .pedido .container-pedido{
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
 }
 .pedido .container-pedido .card-pedido{
-    max-width: 100%;
-    min-width: 100%;
+    max-width: 100% !important;
+    min-width: 100% !important;
 }
 }
