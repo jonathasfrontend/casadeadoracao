@@ -122,6 +122,13 @@
     .main .texts h3 span{
         color: #b1b1b1;
     }
+    .pedido .container-pedido{
+        grid-template-columns: 1fr !important;
+    }
+    .pedido .container-pedido .card-pedido{
+        max-width: 100%;
+        min-width: 100%;
+    }
 }
 @media (max-width: 1250px){
     .container-mestres{
@@ -238,10 +245,10 @@
 }
 @media (max-width: 500px){
     .conte .cotent-times{
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr) !important;
     }
 }
-@media (max-width: 600px){
+@media (max-width: 610px){
 .pedido .container-pedido{
     grid-template-columns: 1fr !important;
 }
