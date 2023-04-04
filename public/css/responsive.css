@@ -49,14 +49,16 @@
         font-size: 20px;
         font-weight: 500;
     }
-    /* .mobile-header .mobile .close{
-        position:fixed;
-        top: 25px;
-        right: 6em;
-    } */
     .main .texts h1{
         font-size: 60px;
         color: #ffffff;
+    }
+    .pedido .container-pedido{
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    .pedido .container-pedido .card-pedido{
+        max-width: 100%;
+        min-width: 100%;
     }
     
 }
@@ -186,26 +188,12 @@
         max-width: 100%;
         min-width: 100%;
     }
-    .pedido .container-pedido{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .pedido .container-pedido .card-pedido{
-        max-width: 100%;
-        min-width: 100%;
-    }
 }
 @media (max-width: 850px){
     .projetos .container-projetos{
         grid-template-columns: repeat(1, 1fr);
     }
     .projetos .container-projetos .card-projetos{
-        max-width: 100%;
-        min-width: 100%;
-    }
-    .pedido .container-pedido{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .pedido .container-pedido .card-pedido{
         max-width: 100%;
         min-width: 100%;
     }
@@ -235,6 +223,13 @@
         padding: 2%;
         z-index: 100;
     }
+    .pedido .container-pedido{
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .pedido .container-pedido .card-pedido{
+        max-width: 100%;
+        min-width: 100%;
+    }
 }
 @media (max-width: 740px){
     .conte .cotent-times{
@@ -245,4 +240,13 @@
     .conte .cotent-times{
         grid-template-columns: repeat(1, 1fr);
     }
+}
+@media (max-width: 600px){
+.pedido .container-pedido{
+    grid-template-columns: 1fr !important;
+}
+.pedido .container-pedido .card-pedido{
+    max-width: 100%;
+    min-width: 100%;
+}
 }
