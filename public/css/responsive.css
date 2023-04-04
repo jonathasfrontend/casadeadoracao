@@ -1,6 +1,5 @@
 .mobile-header{
-    /* display: none;*/
-    visi
+    display: none;
 }
 @media (max-width: 1040px){
     .main-header{
