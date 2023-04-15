@@ -111,6 +111,35 @@
 
 /* ##################################################### */
 
+.galeria .container-galeria{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+.galeria .container-galeria .card-img{
+    min-width: 220px;
+    height: 170px;
+    background: #000000b4;
+    backdrop-filter: blur(8px);
+    border-radius: 6px;
+    padding: 2px;
+}
+.galeria .container-galeria .card-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.galeria .container-galeria h1{
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* ##################################################### */
+
 .conte .cotent-times{
     width: 100%;
     display: grid;
