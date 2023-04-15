@@ -88,15 +88,7 @@
         z-index: 100 !important;
     }
     .main{
-        display: flex !important;
-        align-items: center !important;
-        width: 100% !important;
-        height: 100vh !important;
         background-image: url('../img/fundo2mobile.png') !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-size: cover !important;
-        background-attachment: fixed !important;
         padding: 0 1em !important;
     }
     header{
