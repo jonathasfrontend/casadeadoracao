@@ -5,7 +5,7 @@ window.addEventListener('scroll', function() {
 });
 
 var typed = new Typed(".typing", {
-    strings: ["Palavras", "Louvor", "Dança", "Teatro"],
+    strings: ["Palavra", "Louvor", "Dança", "Teatro"],
     typeSpeed: 60,
     backSpeed: 50,
     loop: true
