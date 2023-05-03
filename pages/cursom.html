@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('partials/head.html') %>
+    <title>Casa de Adoração</title>
+    <style>
+      .containe-desq-edf .img-container img{
+          width: 10em;
+          height: auto;
+      }
+    </style>
+</head>
+<body>
+    <%- include('./partials/components/header.html') %>
+    <main class="containe-desq-edf">
+      <div class="img-container">
+          <img src="../public/img/logobranco.png" alt="imagem escola de fundamentos">
+      </div>
+      <div class="objetivo">
+          <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo ad deleniti cum enim velit hic repellendus, dolorem maxime? Delectus eum dolorum voluptatem tempora libero accusamus labore corporis doloribus inventore repellat.</h4>
+      </div>
+    </main>
+
+    <main class="container-curso">
+      <div class="content">
+        <div class="card-curso">
+          <iframe id="aula_video" src="https://www.youtube.com/embed/S8frBn0gPVU" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        <div class="card-curso">
+          <iframe id="aula_video" src="https://www.youtube.com/embed/S8frBn0gPVU" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        <div class="card-curso">
+          <iframe id="aula_video" src="https://www.youtube.com/embed/S8frBn0gPVU" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        <div class="card-curso">
+          <iframe id="aula_video" src="https://www.youtube.com/embed/S8frBn0gPVU" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+      </div>
+    </main>
+    <%- include('./partials/components/contato.html') %>
+    <%- include('./partials/components/footer.html') %>
+    <script src="../public/js/main.js"></script>
+</body>
+</html>

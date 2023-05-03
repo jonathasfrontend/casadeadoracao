@@ -48,7 +48,10 @@ body{
 /* escola de fundamentos */
 .descricao,
 /* pedido de oração */
-.pedido{
+.pedido,
+/* curso de membresia */
+.container-curso
+{
     width: 100%;
     height: 100%;
     display: flex;

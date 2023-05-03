@@ -3,29 +3,12 @@
 <head>
     <%- include('partials/head.html') %>
 </head>
-<body>
-    <%- include('./partials/components/header.html') %>
+<body style="backdrop-filter: blur(2px);">
 
     <main class="logado">
-        <h1>Seja bem vindo </h1>
+        <div class="menu"></div>
+        <div class="content"></div>
     </main>
-    <%- include('./partials/components/footer.html') %>
 
-    <script>
-        var link_ = document.getElementById('link_');
-        link_.addEventListener('click', (e)=>{
-            e.preventDefault();
-        })
-        const openMenu = document.querySelector('.mobile');
-        const btnOpen = document.querySelector('.open');
-        const btnClose = document.querySelector('.close');
-
-        btnOpen.addEventListener('click', function() {
-            openMenu.style.display = 'block';
-        })
-        btnClose.addEventListener('click', function() {
-            openMenu.style.display = 'none';
-        })
-     </script>
 </body>
 </html>

@@ -181,96 +181,44 @@ var usuarios = [
 app.post('/admin', async (req,res)=>{
     await usuarios.map(function(val){
         if(val.email == req.body.login && val.senha == req.body.senha){
-
-            axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-                var iniciosobre = data.data.map(function(val){
-                    return {
-                        inicio: val.inicio,
-                        sobre: val.sobre,
-                        contato: val.contato
-                    }
-                })
-                axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
-                    var linkscontato = data.data.map(function(val){
-                        return {
-                            img: val.img,
-                            title: val.title,
-                            url: val.url
-                        }
-                    })
-                    res.render('logado',{data_iniciosobre:iniciosobre, contat:linkscontato});
-                })
-            })
-
+            res.render('logado');
         }else{
-           axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-                var iniciosobre = data.data.map(function(val){
-                    return {
-                        inicio: val.inicio,
-                        sobre: val.sobre,
-                        contato: val.contato
-                    }
-                })
-                axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
-                    var linkscontato = data.data.map(function(val){
-                        return {
-                            img: val.img,
-                            title: val.title,
-                            url: val.url
-                        }
-                    })
-                    res.render('login',{data_iniciosobre:iniciosobre, contat:linkscontato});
-                })
-            })
+            res.render('login');
+            // alert('login incorreto')
         }
     })
 })
 
 app.get('/admin', async (req,res)=>{
     if(req.session.email == null){
-        await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-            var iniciosobre = data.data.map(function(val){
-                return {
-                    inicio: val.inicio,
-                    sobre: val.sobre,
-                    contato: val.contato
-                }
-            })
-            axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
-                var linkscontato = data.data.map(function(val){
-                    return {
-                        img: val.img,
-                        title: val.title,
-                        url: val.url
-                    }
-                })
-                res.render('login',{data_iniciosobre:iniciosobre, contat:linkscontato});
-            })
-        })
+        res.render('login');
+        // alert('login incorreto')
     }else{
-        
-        await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-            var iniciosobre = data.data.map(function(val){
-                return {
-                    inicio: val.inicio,
-                    sobre: val.sobre,
-                    contato: val.contato
-                }
-            })
-            axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
-                var linkscontato = data.data.map(function(val){
-                    return {
-                        img: val.img,
-                        title: val.title,
-                        url: val.url
-                    }
-                })
-                res.render('logado',{data_iniciosobre:iniciosobre, contat:linkscontato});
-            })
-        })
-
+        res.render('logado');
     }
 });
+
+app.get('/cursodemembresia', async (req, res) =>{
+    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
+        var iniciosobre = data.data.map(function(val){
+            return {
+                inicio: val.inicio,
+                sobre: val.sobre,
+                contato: val.contato
+            }
+        })
+        axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
+            var linkscontato = data.data.map(function(val){
+                return {
+                    img: val.img,
+                    title: val.title,
+                    url: val.url
+                }
+            })
+            res.render('cursom',{data_iniciosobre:iniciosobre, contat:linkscontato});
+        })
+    })
+})
 
 app.use(function(req, res, next) {
     res.status(404).render('404');
