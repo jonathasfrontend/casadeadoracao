@@ -24,6 +24,10 @@
         top: 25px;
         right: 1em;
     }
+    .mobile-header .logo img{
+            width: 3em;
+            height: 3em;
+    }
     .mobile-header .mobile{
         display: none;
         position: fixed;

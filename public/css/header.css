@@ -18,9 +18,6 @@ header .logo img{
     width: 3em;
     height: 3em;
 }
-header .logo h3 span{
-    color: #ffffff;
-}
 header .desktop li{
     margin: 0 5px;
 }
@@ -34,7 +31,12 @@ header .desktop li a{
     transition-duration: 0.3s;
     border-radius: 4px;
 }
-header .desktop li .M1{
+header .header-btn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+header .header-btn .M1{
     text-decoration: none;
     background-color: #ffffff;
     color: #000000;
@@ -44,6 +46,7 @@ header .desktop li .M1{
     transition: 0.3s;
     transition-duration: 0.3s;
     border-radius: 4px;
+    margin: 0 10px;
 }
 header .desktop li a:hover{
     background-color: #ffffff;
