@@ -17,6 +17,10 @@
 }
 .main .texts h1{
     font-size: 85px;
+    color: #b1b1b1;
+}
+.main .texts h1 span{
+    font-size: 85px;
     color: #ffffff;
 }
 .main .texts h3{
@@ -25,7 +29,7 @@
     color: #ffffff;
 }
 .main .texts h3 span{
-    color: #b1b1b1;
+    color: #ffffff;
 }
 .main .texts .text-typing{
     font-size: 40px;
