@@ -21,24 +21,38 @@
       </div>
     </main>
 
-    <main class="container-curso">
-      <div class="content">
-        <div class="card-curso">
-          <iframe id="aula_video" src="https://www.youtube.com/embed/S8frBn0gPVU" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        </div>
-        <div class="card-curso">
-          <iframe id="aula_video" src="https://www.youtube.com/embed/S8frBn0gPVU" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        </div>
-        <div class="card-curso">
-          <iframe id="aula_video" src="https://www.youtube.com/embed/S8frBn0gPVU" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        </div>
-        <div class="card-curso">
-          <iframe id="aula_video" src="https://www.youtube.com/embed/S8frBn0gPVU" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        </div>
-      </div>
+    <main class="container-cursom">
+
+        <a href="#form" id="btn" class="insc-open">
+            <img src="../public/img/svgs/document.svg" alt="">
+            Fazer Inscrição
+        </a>
+        <!-- <button class="insc-close">Inscrições fechadas</button> -->
+
+        <form action="/cursodemembresia" method="post" id="form" class="forminputs">
+            <input type="text" required name="nome" placeholder="Nome">
+            <input type="date" required name="nascimento" placeholder="Data de nascimento" />
+            <input type="tel"  required name="telefone" placeholder="Telefone" />
+            <input type="text" required name="estadocivil" placeholder="Estado Civil" />
+            <input type="text" required name="natural" placeholder="Natural de?" />
+            <input type="text" required name="enereco" placeholder="Endereço"/>
+            <input type="submit" value="Enviar">
+        </form>
     </main>
+
+    
     <%- include('./partials/components/contato.html') %>
     <%- include('./partials/components/footer.html') %>
+    <script>
+        const btn = document.getElementById('btn');
+        const form = document.getElementById('form');
+        btn.addEventListener('click', (e)=>{
+            form.style.visibility = 'visible'
+            form.style.opacity = '1'
+            form.style.height = '100%'
+            e.preventDefault()
+        })
+        </script>
     <script src="../public/js/main.js"></script>
 </body>
 </html>

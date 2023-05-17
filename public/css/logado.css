@@ -1,16 +1,21 @@
-.logado{
+.container-usuarios{
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
 }
-.logado .menu{
-    width: 20%;
-    height: 100vh;
-    background-color: #ffffffaa;
+.container-usuarios .usuarios{
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 6px;
 }
-.logado .content{
-    width: 80%;
-    height: 100vh;
-    background-color: #000000aa;
+.container-usuarios .usuarios p{
+    font-size: 16px;
+    color: #383838;
+    font-weight: 500;
+    margin-bottom: 5px;
 }

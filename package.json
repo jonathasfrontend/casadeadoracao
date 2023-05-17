@@ -24,6 +24,7 @@
     "nodemon": "^2.0.19"
   },
   "dependencies": {
-    "express-session": "^1.17.3"
+    "express-session": "^1.17.3",
+    "moment": "^2.29.4"
   }
 }

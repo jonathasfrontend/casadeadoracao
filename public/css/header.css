@@ -14,6 +14,9 @@ header .desktop{
     display: flex;
     align-items: center;
 }
+header .desktop .logo{
+    margin-right: 25px;
+}
 header .desktop .logo img{
     width: 3em;
     height: 3em;
