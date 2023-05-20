@@ -47,7 +47,7 @@
   font-weight: 800;
   border: 0;
   border-radius: 4px;
-  cursor: grab;
+  cursor: no-drop;
 }
 .container-cursom .forminputs input{
   width: 100%;
