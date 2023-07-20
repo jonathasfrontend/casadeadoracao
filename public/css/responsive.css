@@ -1,7 +1,7 @@
 .mobile-header{
     display: none;
 }
-@media (max-width: 1040px){
+@media (max-width: 1121px){
     .main-header{
         display: none !important;
     }
@@ -67,7 +67,10 @@
     /* escola de fundamentos */
     .descricao
     /* pedido de oração */
-    .pedido{
+    .pedido,
+    /* noticias e eventos*/
+    .container-noticia,
+    .container-noticia-post{
         width: 100% !important;
         height: 100% !important;
         display: flex !important;
@@ -124,6 +127,12 @@
     }
     .main .texts h1 span{
         font-size: 10vw !important;
+    }
+    .container-noticia .content-container .card a p{
+        width: 140px;
+    }
+    .container-noticia .container-noticias-recentes{
+        display: none !important;
     }
 }
 @media (max-width: 1250px){

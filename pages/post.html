@@ -2,17 +2,24 @@
 <html lang="pt-br">
 <head>
     <%- include('partials/head.html') %>
-    <title>Casa de Adoração</title>
+    <title>Blog | Casa de Adoração</title>
 </head>
 <body>
     <%- include('./partials/components/header.html') %>
-    <%- include('./partials/components/main.html') %>
-    <%- include('./partials/components/sobre.html') %>
-    <%- include('./partials/components/projetos.html') %>
-    <%- include('./partials/components/galeria.html') %>
-    <%- include('./partials/components/conteconsco.html') %>
+
+    <main class="container-noticia-post">
+      <div class="content-container">
+        <div class="card-post">
+          <h1><%= postesn.title %></h1>
+          <p><%= postesn.createdAt %> por <%= postesn.autor %></p>
+          <p class="conteudo-descricao"><%- postesn.body %></p>
+        </div>
+      </div>
+  </main>
+
     <%- include('./partials/components/contato.html') %>
     <%- include('./partials/components/footer.html') %>
+    
     <script src="../public/js/main.js"></script>
     <script src="../public/js/script.js"></script>
 </body>

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <%- include('partials/head.html') %>
-    <title>Casa de Adoração</title>
+    <title>Pedido de Oração | Casa de Adoração</title>
 </head>
 <body>
     <%- include('./partials/components/header.html') %>
@@ -21,17 +21,8 @@
     </main>
     <%- include('./partials/components/footer.html') %>
 
-    <script>
-        const openMenu = document.querySelector('.mobile');
-        const btnOpen = document.querySelector('.open');
-        const btnClose = document.querySelector('.close');
 
-        btnOpen.addEventListener('click', function() {
-            openMenu.style.display = 'block';
-        })
-        btnClose.addEventListener('click', function() {
-            openMenu.style.display = 'none';
-        })
-    </script>
+    <script src="../public/js/main.js"></script>
+    <script src="../public/js/script.js"></script>
 </body>
 </html>

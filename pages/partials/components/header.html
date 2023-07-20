@@ -1,13 +1,14 @@
 <header class="main-header">
     <ul class="desktop">
         <div class="logo">
-            <img src="../public/img/logobranco.png" alt="">
+            <a href="/"><img src="../public/img/logobranco.png" alt=""></a>
         </div>
         <li><a href="/">Inicio</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#galeria">Galeria</a></li>
         <li><a href="#contato">Contato</a></li>
+        <li><a href="/blog">Blog</a></li>
     </ul>
     <div class="header-btn">
         <a class="M1" href="/pedidosdeoracao">Pedido de Oração</a>
@@ -17,7 +18,7 @@
 
 <header class="mobile-header">
     <div class="logo">
-        <img src="../public/img/logobranco.png" alt="">
+        <a href="/"><img src="../public/img/logobranco.png" alt=""></a>
     </div>
     <div class="menu-icon">
         <img class="open" src="./public/img/svgs/menu.svg" alt="">
@@ -28,7 +29,19 @@
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#galeria">Galeria</a></li>
         <li><a href="#contato">Contato</a></li>
+        <li><a href="/blog">Blog</a></li>
         <li><a class="M1" href="/pedidosdeoracao">Pedido de Oração</a></li>
         <li><a class="M1" href="/cursodemembresia">Curso de membresia</a></li>
     </ul>
 </header>
+
+<script>
+            const btn = document.getElementById('btn');
+        const form = document.getElementById('form');
+        btn.addEventListener('click', (e)=>{
+            form.style.visibility = 'visible'
+            form.style.opacity = '1'
+            form.style.height = '100%'
+            e.preventDefault()
+        })
+</script>
