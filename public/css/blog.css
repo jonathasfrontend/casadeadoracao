@@ -23,7 +23,7 @@
   margin: 10px 0;
   overflow: hidden;
 }
-.container-noticia .content-container .card::after{
+/* .container-noticia .content-container .card::after{
   content:'';
   position: absolute;
   width: 100%;
@@ -31,7 +31,7 @@
   background: linear-gradient(0deg, #dbdbe3 20%, #dbdbe39b 50%, #ffffff00 100%);
   bottom: 0;
   left: 0;
-}
+} */
 .container-noticia .content-container .card a{
   text-decoration: none;
   display: flex;

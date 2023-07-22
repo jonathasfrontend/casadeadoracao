@@ -14,7 +14,7 @@
                         <h1><%= post[i].title %></h1>
                         <p><%= post[i].createdAt %> por: <strong><%= post[i].autor %></strong></p>
                     </a>
-                    <p class="conteudo"><%- post[i].body %></p>
+                    <p class="conteudo"><%- post[i].body %> <strong>...</strong></p>
                 </div>
             <% }%>
         </div>
@@ -26,7 +26,7 @@
                     <a href="/blog/<%= nLimit[i].id %>">
                         <h1><%= nLimit[i].title %></h1>
                         <p><%= nLimit[i].createdAt %> por: <strong><%= post[i].autor %></strong></p>
-                        <p class="conteudo"><%- nLimit[i].body %></p>
+                        <p class="conteudo"><%- nLimit[i].body %>...</p>
                     </a>
                 </div>
             <% }%>

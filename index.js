@@ -51,10 +51,10 @@ app.get('/',async (req, res) => {
                         }
                     })
                 res.render('home',{data_iniciosobre:iniciosobre,dataprojetos:projetos,data_cont:conteconosco,contat:linkscontato});
+                });
             });
-        });
+        })
     })
-})
 })
 app.get('/escoladefundamentos',async (req, res) => {
     await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
@@ -139,7 +139,7 @@ app.get('/blog',async (req, res) => {
     const post = noticia.data.map(val => ({
         id: val._id,
         title: val.title,
-        body: val.body,
+        body: val.body.substr(0,310),
         createdAt: val.createdAt,
         autor: val.autor
     }));
