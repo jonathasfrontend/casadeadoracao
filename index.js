@@ -203,17 +203,23 @@ app.post('/blog/search', async (req, res) => {
         url: val.url
     }));
   
-      let searchTerm = req.body.searchTerm;
-      const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
-  
-      const data = await Noticias.find({
-        $or: [
-          { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
-          { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }}
-        ]
-      });
-  
-      res.render("search", {data,data_iniciosobre:iniciosobre, contat:linkscontato});
+    let searchTerm = req.body.searchTerm;
+    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
+
+    const data = await Noticias.find({
+    $or: [
+        { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+        { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }}
+    ]
+    });
+
+    if(data.length === 0){
+        res.redirect('/blog')
+    }else{
+        res.render("search", {data,data_iniciosobre:iniciosobre, contat:linkscontato});
+    }
+
+
   
   });
 app.get('/enviado', async (req, res) =>{
