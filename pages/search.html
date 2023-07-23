@@ -8,6 +8,7 @@
   <%- include('./partials/components/header.html') %>
   
   <section class="container-search">
+    <div class="content-container">
       <% data.forEach(post => { %>
         <div class="card">
           <a href="/blog/<%= post.id %>">
@@ -17,6 +18,29 @@
           <p class="conteudo"><%- post.body %> <strong>...</strong></p>
         </div>
       <% }) %>
+    </div>
+
+    <div class="containernoticiasrecentesmain">
+      <div class="search">
+          <form action="/blog/search" method="post" class="search__form" role="search">
+              <input type="search" aria-label="Seach" id="searchInput" name="searchTerm" placeholder="Pesquise...">
+              <button type="submit"><img src="../public/img/svgs/search.svg" alt=""></button>
+          </form>
+      </div>
+
+      <div class="container-noticias-recentes">
+          <h1 class="titulo">Publicados recentes</h1>
+          <% for(let i = 0; i < nLimit.length; i++) { %>
+              <div class="card">
+                  <a href="/blog/<%= nLimit[i].id %>">
+                      <h1><%= nLimit[i].title %></h1>
+                      <p><%= nLimit[i].createdAt %> por: <strong><%= nLimit[i].autor %></strong></p>
+                      <p class="conteudo"><%- nLimit[i].body %>...</p>
+                  </a>
+              </div>
+          <% }%>
+      </div>
+  </div>
   </section>
 
   <%- include('./partials/components/contato.html') %>

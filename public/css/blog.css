@@ -68,6 +68,18 @@
   border-radius: 4px;
   padding: 15px;
 }
+.container-noticia-post .content-container .card-post .voltar{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 800;
+}
+.container-noticia-post .content-container .card-post .voltar img{
+  width: 20px;
+  height: 20px;
+}
 .container-noticia-post .content-container .card-post h1{
   font-size: 3em;
   font-weight: 700;
@@ -88,6 +100,7 @@
 }
 
 /* noticias recentes ################################################# */
+
 .container-noticia .containernoticiasrecentesmain{
   width: 30%;
   height: 100%;
@@ -177,9 +190,19 @@
 /* Pesquisa ####################################### */
 
 .container-search{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 6em;
+  z-index: 100;
   margin-top: 4em;
 }
-.container-search .card{
+.container-search .content-container{
+  width: 100%;
+  height: 100%;
+}
+.container-search .content-container .card{
   position: relative;
   width: 100%;
   height: 120px;
@@ -190,31 +213,120 @@
   margin: 10px 0;
   overflow: hidden;
 }
-.container-search .card a{
+.container-search .content-container .card a{
   text-decoration: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
 }
-.container-search .card a h1{
+.container-search .content-container .card a h1{
   font-size: 30px;
   font-weight: 800;
   color: #000000;
   font-family: 'Ubuntu Condensed', sans-serif;
 }
-.container-search .card a h1:hover{
+.container-search .content-container .card a h1:hover{
   text-decoration: underline;
 }
-.container-search .card a p{
+.container-search .content-container .card a p{
   font-size: 14px;
   font-weight: 300;
   color: #000000;
   font-family:'Courier New', Courier, monospace;
 }
-.container-search .card .conteudo{
+.container-search .content-container .card .conteudo{
   font-size: 16px;
   font-weight: 300;
   text-align: justify;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* noticias recentes ##################################### */
+
+
+.container-search .containernoticiasrecentesmain{
+  width: 30%;
+  height: 100%;
+  margin: 0 20px; 
+}
+.container-search .containernoticiasrecentesmain .search{
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff7a;
+  backdrop-filter: blur(20px);
+  border-radius: 4px;
+  padding: 8px 15px;
+  margin-bottom: 10px;
+}
+.container-search .containernoticiasrecentesmain .search form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container-search .containernoticiasrecentesmain .search form input{
+  outline: none;
+  width: 100%;
+  height: 32px;
+  border: none;
+  padding-left: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+.container-search .containernoticiasrecentesmain .search form button{
+  background-color: #ffffff7a;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 4px;
+}
+.container-search .containernoticiasrecentesmain .search form button img{
+  width: 20px;
+  height: 20px;
+}
+.container-search .containernoticiasrecentesmain .container-noticias-recentes{
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff7a;
+  backdrop-filter: blur(20px);
+  border-radius: 4px;
+  padding: 15px;
+}
+.container-search .containernoticiasrecentesmain .container-noticias-recentes .titulo{
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.container-search .containernoticiasrecentesmain .container-noticias-recentes .card{
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px;
+  border-bottom: 1px solid #000000;
+  transition: 0.3s;
+}
+.container-search .containernoticiasrecentesmain .container-noticias-recentes .card:hover{
+  background-color: #2929292a;
+  border-radius: 4px;
+  border-bottom: 1px solid #2929292a;
+}
+.container-search .containernoticiasrecentesmain .container-noticias-recentes .card a{
+  text-decoration: none;
+  color: #000000;
+}
+.container-search .containernoticiasrecentesmain .container-noticias-recentes a h1{
+  font-size: 1.2em;
+  font-weight: 700;
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
+.container-search .containernoticiasrecentesmain .container-noticias-recentes a p{
+  font-size: 16px;
+  font-weight: 500;
+  margin: 5px 0;
+  
+  font-family:'Courier New', Courier, monospace;
+}
+.container-search .containernoticiasrecentesmain .container-noticias-recentes a .conteudo{
+  font-size: 12px;
+  font-weight: 400;
   font-family: 'Roboto', sans-serif;
 }

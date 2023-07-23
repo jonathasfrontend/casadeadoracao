@@ -203,6 +203,18 @@ app.post('/blog/search', async (req, res) => {
         url: val.url
     }));
   
+    const noticia2 = await axios.get(process.env.URL_NOTICIA_GET_MONGO);
+    const postLimit = noticia2.data.map(val => ({
+        id: val._id,
+        title: val.title,
+        body: val.body.substr(0,100),
+        createdAt: val.createdAt,
+        autor: val.autor
+    }));
+
+    postLimit.reverse();
+    const nLimit = postLimit.slice(0, 4);
+
     let searchTerm = req.body.searchTerm;
     const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
 
@@ -216,7 +228,7 @@ app.post('/blog/search', async (req, res) => {
     if(data.length === 0){
         res.redirect('/blog')
     }else{
-        res.render("search", {data,data_iniciosobre:iniciosobre, contat:linkscontato});
+        res.render("search", {data, data_iniciosobre:iniciosobre, contat:linkscontato, nLimit});
     }
 
 
