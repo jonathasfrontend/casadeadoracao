@@ -54,7 +54,8 @@ body{
 /* curso de membresia */
 .container-cursom,
 /* blog */
-.container-noticia-post
+.container-noticia-post,
+.container-search
 {
     width: 100%;
     height: 100%;

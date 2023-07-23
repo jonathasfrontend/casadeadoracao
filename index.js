@@ -188,6 +188,34 @@ app.get('/blog/:id', async (req, res) => {
     }
     
 })
+app.post('/blog/search', async (req, res) => {
+    const inicioSobre = await axios.get(process.env.URL_API_INICIO_SOBRE);
+    const iniciosobre = inicioSobre.data.map(val => ({
+        inicio: val.inicio,
+        sobre: val.sobre,
+        contato: val.contato
+    }));
+
+    const linksContato = await axios.get(process.env.URL_API_LINKS_CONTATO);
+    const linkscontato = linksContato.data.map(val => ({
+        img: val.img,
+        title: val.title,
+        url: val.url
+    }));
+  
+      let searchTerm = req.body.searchTerm;
+      const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
+  
+      const data = await Noticias.find({
+        $or: [
+          { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+          { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }}
+        ]
+      });
+  
+      res.render("search", {data,data_iniciosobre:iniciosobre, contat:linkscontato});
+  
+  });
 app.get('/enviado', async (req, res) =>{
     await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
         var iniciosobre = data.data.map(function(val){

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('partials/head.html') %>
+    <title>Pesquisa | Casa de Adoração</title>
+</head>
+<body>
+  <%- include('./partials/components/header.html') %>
+  
+  <section class="container-search">
+      <% data.forEach(post => { %>
+        <div class="card">
+          <a href="/blog/<%= post.id %>">
+            <h1><%= post.title %></h1>
+            <p><%= post.createdAt %> por: <strong><%= post.autor %></strong></p>
+          </a>
+          <p class="conteudo"><%- post.body %> <strong>...</strong></p>
+        </div>
+      <% }) %>
+  </section>
+
+  <%- include('./partials/components/contato.html') %>
+  <%- include('./partials/components/footer.html') %>
+  <script src="../public/js/main.js"></script>
+  <script src="../public/js/script.js"></script>
+</body>
+</html>
