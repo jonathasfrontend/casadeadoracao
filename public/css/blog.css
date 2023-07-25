@@ -26,6 +26,7 @@
 .container-noticia .content-container .card a{
   text-decoration: none;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
@@ -34,7 +35,12 @@
   font-size: 30px;
   font-weight: 800;
   color: #000000;
+  display: flex;
+  align-items: baseline;
   font-family: 'Ubuntu Condensed', sans-serif;
+}
+.container-noticia .content-container .card a h1 p{
+  margin-left: 5px;
 }
 .container-noticia .content-container .card a h1:hover{
   text-decoration: underline;

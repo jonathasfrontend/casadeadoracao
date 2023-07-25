@@ -11,7 +11,7 @@
             <% for(let i = 0; i < post.length; i++) { %>
                 <div class="card">
                     <a href="/blog/<%= post[i].id %>">
-                        <h1><%= post[i].title %></h1>
+                        <h1><%= post[i].title %> <p>Categoria: <%= post[i].category %></p></h1>
                         <p><%= post[i].createdAt %> por: <strong><%= post[i].autor %></strong></p>
                     </a>
                     <p class="conteudo"><%- post[i].body %> <strong>...</strong></p>
@@ -32,8 +32,8 @@
                 <% for(let i = 0; i < nLimit.length; i++) { %>
                     <div class="card">
                         <a href="/blog/<%= nLimit[i].id %>">
-                            <h1><%= nLimit[i].title %></h1>
-                            <p><%= nLimit[i].createdAt %> por: <strong><%= post[i].autor %></strong></p>
+                            <h1><%= nLimit[i].title %><p>Categoria: <%= nLimit[i].category %></p></h1>
+                            <p><%= nLimit[i].createdAt %> por: <strong><%= nLimit[i].autor %></strong></p>
                             <p class="conteudo"><%- nLimit[i].body %>...</p>
                         </a>
                     </div>

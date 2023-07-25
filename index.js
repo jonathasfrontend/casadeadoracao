@@ -139,6 +139,7 @@ app.get('/blog',async (req, res) => {
     const post = noticia.data.map(val => ({
         id: val._id,
         title: val.title,
+        category: val.category,
         body: val.body.substr(0,310),
         createdAt: val.createdAt,
         autor: val.autor
@@ -148,6 +149,7 @@ app.get('/blog',async (req, res) => {
     const postLimit = noticia2.data.map(val => ({
         id: val._id,
         title: val.title,
+        category: val.category,
         body: val.body.substr(0,100),
         createdAt: val.createdAt,
         autor: val.autor
@@ -207,6 +209,7 @@ app.post('/blog/search', async (req, res) => {
     const postLimit = noticia2.data.map(val => ({
         id: val._id,
         title: val.title,
+        category: val.category,
         body: val.body.substr(0,100),
         createdAt: val.createdAt,
         autor: val.autor
@@ -230,10 +233,7 @@ app.post('/blog/search', async (req, res) => {
     }else{
         res.render("search", {data, data_iniciosobre:iniciosobre, contat:linkscontato, nLimit});
     }
-
-
-  
-  });
+});
 app.get('/enviado', async (req, res) =>{
     await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
         var iniciosobre = data.data.map(function(val){
