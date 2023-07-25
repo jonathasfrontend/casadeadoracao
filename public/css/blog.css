@@ -336,3 +336,32 @@
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
 }
+
+/* categoria ################################## */
+
+.container-noticia .containernoticiasrecentesmain .categoria{
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff7a;
+  backdrop-filter: blur(20px);
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 10px;
+}
+.container-noticia .containernoticiasrecentesmain .categoria .conatiner-categorias{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.container-noticia .containernoticiasrecentesmain .categoria a{
+  text-decoration: none;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 4px;
+  margin: 2px;
+}
