@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "express-session": "^1.17.3",
+    "linkifyjs": "^4.1.1",
     "mercadopago": "^1.5.16",
     "moment": "^2.29.4",
     "mongoose": "^7.3.4"

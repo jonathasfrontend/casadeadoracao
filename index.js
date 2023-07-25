@@ -3,9 +3,42 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios');
 const mongoose = require('mongoose')
+const linkify = require('linkifyjs');
 const Noticias = require('./models/noticias')
 
 const app = express();
+
+function ehImagem(url) {
+    const extensoesImagem = ['.jpg', '.jpeg', '.png', '.gif', '.svg', '.webp'];
+    return extensoesImagem.some((extensao) => url.toLowerCase().endsWith(extensao));
+  }
+  
+  // Função para detectar e transformar URLs em links clicáveis com o texto ou imagem
+  function detectarLinks(texto) {
+    const tokens = linkify.find(texto);
+    let linkedText = '';
+  
+    let lastIndex = 0;
+    for (const token of tokens) {
+      if (token.type === 'url') {
+        const linkContent = texto.substring(lastIndex, token.start);
+        if (linkContent.trim() !== '') {
+          linkedText += linkContent; // Adiciona o texto antes da URL
+        }
+  
+        if (ehImagem(token.href)) {
+          linkedText += `<img src="${token.href}" alt="Imagem" />`; // Adiciona a imagem
+        } else {
+          linkedText += `<a href="${token.href}" target="_blank">${token.value}</a>`; // Adiciona o link clicável
+        }
+        lastIndex = token.end;
+      }
+    }
+    linkedText += texto.substring(lastIndex); // Adiciona o texto após a última URL
+  
+    return linkedText;
+  }
+  
 
 require('dotenv').config();
 app.use( bodyParser.json() );
@@ -14,7 +47,6 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, '/pages'));
-
 
 app.get('/',async (req, res) => {
     await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
@@ -179,11 +211,14 @@ app.get('/blog/:id', async (req, res) => {
             url: val.url
         }
     })
-        
+
     let slug = req.params.id;
     const postesn = await Noticias.findById({ _id: slug });
 
+    
     if (postesn != null) {    
+        postesn.body = detectarLinks(postesn.body);
+
         res.render('post',{data_iniciosobre:iniciosobre, contat:linkscontato, postesn});
     }else{
         res.status(404).render('404');
