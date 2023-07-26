@@ -208,7 +208,7 @@ app.get('/blog/:id', async (req, res) => {
         }));
 
         const slug = req.params.id;
-        const postesn = await Noticias.findById(slug, { body: 1, title: 1 });
+        const postesn = await Noticias.findById({ _id: slug });
 
         if (postesn) {
             postesn.body = detectarLinks(postesn.body);
