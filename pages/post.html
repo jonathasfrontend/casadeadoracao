@@ -10,10 +10,10 @@
     <main class="container-noticia-post">
       <div class="content-container">
         <div class="card-post">
-          <a href="/blog" class="voltar"><img src="../public/img/svgs/back.svg" alt=""> Voltar</a>
-          <p>Categoria: <%= postesn.category %></p>
+          <a href="/blog" class="voltar"><img src="../public/img/svgs/back.svg" alt="">Voltar</a>
           <h1><%= postesn.title %></h1>
-          <p><%= postesn.createdAt %> por <%= postesn.autor %></p>
+          <p>Categoria: <strong><%= postesn.category %></strong></p>
+          <p><i><%= postesn.createdAt %></i> por: <strong><%= postesn.autor %></strong></p>
           <p class="conteudo-descricao"><%- postesn.body %></p>
         </div>
       </div>

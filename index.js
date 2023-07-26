@@ -218,7 +218,6 @@ app.get('/blog/:id', async (req, res) => {
     
     if (postesn != null) {    
         postesn.body = detectarLinks(postesn.body);
-
         res.render('post',{data_iniciosobre:iniciosobre, contat:linkscontato, postesn});
     }else{
         res.status(404).render('404');
