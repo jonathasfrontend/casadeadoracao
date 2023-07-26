@@ -12,8 +12,6 @@ function ehImagem(url) {
     const extensoesImagem = ['.jpg', '.jpeg', '.png', '.gif', '.svg', '.webp'];
     return extensoesImagem.some((extensao) => url.toLowerCase().endsWith(extensao));
   }
-  
-  // Função para detectar e transformar URLs em links clicáveis com o texto ou imagem
   function detectarLinks(texto) {
     const tokens = linkify.find(texto);
     let linkedText = '';
@@ -23,18 +21,18 @@ function ehImagem(url) {
       if (token.type === 'url') {
         const linkContent = texto.substring(lastIndex, token.start);
         if (linkContent.trim() !== '') {
-          linkedText += linkContent; // Adiciona o texto antes da URL
+          linkedText += linkContent;
         }
   
         if (ehImagem(token.href)) {
-          linkedText += `<img src="${token.href}" alt="Imagem" />`; // Adiciona a imagem
+          linkedText += `<img src="${token.href}" alt="Imagem" />`;
         } else {
-          linkedText += `<a href="${token.href}" target="_blank">${token.value}</a>`; // Adiciona o link clicável
+          linkedText += `<a href="${token.href}" target="_blank">${token.value}</a>`;
         }
         lastIndex = token.end;
       }
     }
-    linkedText += texto.substring(lastIndex); // Adiciona o texto após a última URL
+    linkedText += texto.substring(lastIndex);
   
     return linkedText;
   }
@@ -49,99 +47,101 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, '/pages'));
 
 app.get('/',async (req, res) => {
-    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-        var iniciosobre = data.data.map(function(val){
-            return {
-                inicio: val.inicio,
-                sobre: val.sobre,
-                contato: val.contato
-            }
-        })
-        axios.get(process.env.URL_API_PROJETO).then(function(data){
-            var projetos = data.data.map(function(val){
-                return {
-                    img: val.img,
-                    title: val.title,
-                    sobre: val.sobre,
-                    url: val.url
-                }
-            })
-            axios.get(process.env.URL_API_CONTECONOSCO).then(function(data){
-                var conteconosco = data.data.map(function(val){
-                    return {
-                        img_url: val.img_url,
-                        nome: val.nome,
-                        type: val.type
-                    }
-                })
-                axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
-                    var linkscontato = data.data.map(function(val){
-                        return {
-                            img: val.img,
-                            title: val.title,
-                            url: val.url
-                        }
-                    })
-                res.render('home',{data_iniciosobre:iniciosobre,dataprojetos:projetos,data_cont:conteconosco,contat:linkscontato});
-                });
-            });
-        })
-    })
+    try {
+        const [
+            responseInicioSobre,
+            responseProjetos,
+            responseConteConosco,
+            responseLinksContato
+        ] = await Promise.all([
+            axios.get(process.env.URL_API_INICIO_SOBRE),
+            axios.get(process.env.URL_API_PROJETO),
+            axios.get(process.env.URL_API_CONTECONOSCO),
+            axios.get(process.env.URL_API_LINKS_CONTATO)
+        ]);
+    
+        const iniciosobre = responseInicioSobre.data.map(({ inicio, sobre, contato }) => ({
+            inicio,
+            sobre,
+            contato
+        }));
+    
+        const projetos = responseProjetos.data.map(({ img, title, sobre, url }) => ({
+            img,
+            title,
+            sobre,
+            url
+        }));
+    
+        const conteconosco = responseConteConosco.data.map(({ img_url, nome, type }) => ({
+            img_url,
+            nome,
+            type
+        }));
+    
+        const linkscontato = responseLinksContato.data.map(({ img, title, url }) => ({
+            img,
+            title,
+            url
+        }));
+    
+        res.render('home', {data_iniciosobre: iniciosobre, dataprojetos: projetos, data_cont: conteconosco, contat: linkscontato});
+    } catch (error) {
+        console.error(error);
+    }
 })
 app.get('/escoladefundamentos',async (req, res) => {
-    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-        var iniciosobre = data.data.map(function(val){
-            return {
-                inicio: val.inicio,
-                sobre: val.sobre,
-                contato: val.contato
-            }
-        })
-        axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
-            var linkscontato = data.data.map(function(val){
-                return {
-                    img: val.img,
-                    title: val.title,
-                    url: val.url
-                }
-            })
-        axios.get(process.env.URL_API_ESCOLADEFUNDAMENTOS).then(function(data){
-            var edfcontent = data.data.map(function(val){
-                return {
-                    Visao: val.Visao,
-                    Missao: val.Missao,
-                    Desenvolvimento: val.Desenvolvimento,
-                    Modulos: val.Modulos,
-                    Mestres: val.Mestres,
-                    link_curso: val.link_curso,
-                    objetivo: val.objetivo
-                }
-            })
-                axios.get(process.env.URL_API_EDFMESTRES).then(function(data){
-                    var edfmestres = data.data.map(function(val){
-                        return{
-                            nome: val.nome,
-                            denominacao: val.denominacao,
-                            avatar: val.avatar
-                        }
-                    })
-                    res.render('edf',{data_iniciosobre:iniciosobre, contat:linkscontato, edf:edfcontent, edfmestres});
-                })
-            })
-        })
-    })
+    try {
+        const [responseInicioSobre, responseLinksContato, responseEscolaDeFundamentos, responseEdfMestres] = await Promise.all([
+            axios.get(process.env.URL_API_INICIO_SOBRE),
+            axios.get(process.env.URL_API_LINKS_CONTATO),
+            axios.get(process.env.URL_API_ESCOLADEFUNDAMENTOS),
+            axios.get(process.env.URL_API_EDFMESTRES)
+        ]);
+        const iniciosobre = responseInicioSobre.data.map(({ inicio, sobre, contato }) => ({
+            inicio,
+            sobre,
+            contato
+        }))
+        const linkscontato = responseLinksContato.data.map(({ img, title, url }) => ({
+            img,
+            title,
+            url
+        }));
+        const edfcontent = responseEscolaDeFundamentos.data.map(({ Visao, Missao, Desenvolvimento, Modulos, Mestres, link_curso, objetivo }) => ({
+            Visao,
+            Missao,
+            Desenvolvimento,
+            Modulos,
+            Mestres,
+            link_curso,
+            objetivo
+        }));
+        const edfmestres = responseEdfMestres.data.map(({ nome, denominacao, avatar }) => ({
+            nome,
+            denominacao,
+            avatar
+        }));
+        res.render('edf', { data_iniciosobre: iniciosobre, contat: linkscontato, edf: edfcontent, edfmestres });
+    } catch (error) {
+        console.error(error);
+    }
+    
 })
 app.get('/pedidosdeoracao',async (req, res) => {
-    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-        var iniciosobre = data.data.map(function(val){
-            return {
-                inicio: val.inicio,
-                sobre: val.sobre,
-                contato: val.contato
-            }
-        })
-            res.render('pedidos',{data_iniciosobre:iniciosobre});
-    })
+    try {
+        const responseInicioSobre = await axios.get(process.env.URL_API_INICIO_SOBRE);
+        const iniciosobre = responseInicioSobre.data.map(({ inicio, sobre, contato }) => ({
+            inicio,
+            sobre,
+            contato
+        }));
+    
+        res.render('pedidos', { data_iniciosobre: iniciosobre });
+    } catch (error) {
+        console.error(error);
+    }
+    
 })
 app.post('/pedidosdeoracao',async (req, res) => {
     const data = {
@@ -272,37 +272,41 @@ app.post('/blog/search', async (req, res) => {
     }
 });
 app.get('/enviado', async (req, res) =>{
-    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-        var iniciosobre = data.data.map(function(val){
-            return {
-                inicio: val.inicio,
-                sobre: val.sobre,
-                contato: val.contato
-            }
-        })
-        res.render('confirmed',{data_iniciosobre:iniciosobre});
-    })
+    try {
+        const response = await axios.get(process.env.URL_API_INICIO_SOBRE);
+        const iniciosobre = response.data.map(({ inicio, sobre, contato }) => ({
+            inicio,
+            sobre,
+            contato
+        }));
+        res.render('confirmed', { data_iniciosobre: iniciosobre });
+    } catch (error) {
+        console.error(error);
+    }
 })
 app.get('/cursodemembresia', async (req, res) =>{
-    await axios.get(process.env.URL_API_INICIO_SOBRE).then(function(data){
-        var iniciosobre = data.data.map(function(val){
-            return {
-                inicio: val.inicio,
-                sobre: val.sobre,
-                contato: val.contato
-            }
-        })
-        axios.get(process.env.URL_API_LINKS_CONTATO).then(function(data){
-            var linkscontato = data.data.map(function(val){
-                return {
-                    img: val.img,
-                    title: val.title,
-                    url: val.url
-                }
-            })
-            res.render('cursom',{data_iniciosobre:iniciosobre, contat:linkscontato});
-        })
-    })
+    try {
+        const [responseInicioSobre, responseLinksContato] = await Promise.all([
+            axios.get(process.env.URL_API_INICIO_SOBRE),
+            axios.get(process.env.URL_API_LINKS_CONTATO)
+        ]);
+    
+        const iniciosobre = responseInicioSobre.data.map(({ inicio, sobre, contato }) => ({
+            inicio,
+            sobre,
+            contato
+        }));
+    
+        const linkscontato = responseLinksContato.data.map(({ img, title, url }) => ({
+            img,
+            title,
+            url
+        }));
+    
+        res.render('cursom', { data_iniciosobre: iniciosobre, contat: linkscontato });
+    } catch (error) {
+        console.error(error);
+    }    
 })
 app.post('/cursodemembresia', async (req, res) =>{
     const data = {
