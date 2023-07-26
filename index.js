@@ -172,7 +172,7 @@ app.get('/blog',async (req, res) => {
         id: val._id,
         title: val.title,
         category: val.category,
-        body: val.body.substr(0,300),
+        body: val.body.substr(0,200),
         createdAt: val.createdAt,
         autor: val.autor
     }));
