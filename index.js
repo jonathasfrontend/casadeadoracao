@@ -152,47 +152,42 @@ app.post('/pedidosdeoracao',async (req, res) => {
       await axios.post(process.env.URL_PEDIDOS_POST_MONGODB, data);
       res.redirect('/enviado')
 })
-app.get('/blog',async (req, res) => {
-    const inicioSobre = await axios.get(process.env.URL_API_INICIO_SOBRE);
-    const iniciosobre = inicioSobre.data.map(val => ({
-        inicio: val.inicio,
-        sobre: val.sobre,
-        contato: val.contato
-    }));
+app.get('/blog', async (req, res) => {
+    try {
+        const [inicioSobre, linksContato, noticia] = await Promise.all([
+            axios.get(process.env.URL_API_INICIO_SOBRE),
+            axios.get(process.env.URL_API_LINKS_CONTATO),
+            axios.get(process.env.URL_NOTICIA_GET_MONGO)
+        ]);
 
-    const linksContato = await axios.get(process.env.URL_API_LINKS_CONTATO);
-    const linkscontato = linksContato.data.map(val => ({
-        img: val.img,
-        title: val.title,
-        url: val.url
-    }));
+        const iniciosobre = inicioSobre.data.map(({ inicio, sobre, contato }) => ({
+            inicio,
+            sobre,
+            contato
+        }));
 
-    const noticia = await axios.get(process.env.URL_NOTICIA_GET_MONGO);
-    const post = noticia.data.map(val => ({
-        id: val._id,
-        title: val.title,
-        category: val.category,
-        body: val.body.substr(0,200),
-        createdAt: val.createdAt,
-        autor: val.autor
-    }));
+        const linkscontato = linksContato.data.map(({ img, title, url }) => ({
+            img,
+            title,
+            url
+        }));
 
-    const noticia2 = await axios.get(process.env.URL_NOTICIA_GET_MONGO);
-    const postLimit = noticia2.data.map(val => ({
-        id: val._id,
-        title: val.title,
-        category: val.category,
-        body: val.body.substr(0,100),
-        createdAt: val.createdAt,
-        autor: val.autor
-    }));
+        const post = noticia.data.map(({ _id, title, category, body, createdAt, autor }) => ({
+            id: _id,
+            title,
+            category,
+            body: body.substr(0, 200),
+            createdAt,
+            autor
+        }));
 
-    post.reverse();
-    postLimit.reverse();
-    const nLimit = postLimit.slice(0, 4);
+        const postLimit = post.slice(0, 4);
 
-    res.render('blog', {data_iniciosobre:iniciosobre, contat:linkscontato, post, nLimit});
-})
+        res.render('blog', { data_iniciosobre: iniciosobre, contat: linkscontato, post, nLimit: postLimit });
+    } catch (error) {
+        console.error(error);
+    }
+});
 app.get('/blog/:id', async (req, res) => {
     try {
         const [responseSobre, responseLinksContato] = await Promise.all([
@@ -226,47 +221,54 @@ app.get('/blog/:id', async (req, res) => {
     }
 });
 app.post('/blog/search', async (req, res) => {
-    const inicioSobre = await axios.get(process.env.URL_API_INICIO_SOBRE);
-    const iniciosobre = inicioSobre.data.map(val => ({
-        inicio: val.inicio,
-        sobre: val.sobre,
-        contato: val.contato
-    }));
+    try {
+        const [inicioSobre, linksContato, noticia2] = await Promise.all([
+            axios.get(process.env.URL_API_INICIO_SOBRE),
+            axios.get(process.env.URL_API_LINKS_CONTATO),
+            axios.get(process.env.URL_NOTICIA_GET_MONGO)
+        ]);
 
-    const linksContato = await axios.get(process.env.URL_API_LINKS_CONTATO);
-    const linkscontato = linksContato.data.map(val => ({
-        img: val.img,
-        title: val.title,
-        url: val.url
-    }));
-  
-    const noticia2 = await axios.get(process.env.URL_NOTICIA_GET_MONGO);
-    const postLimit = noticia2.data.map(val => ({
-        id: val._id,
-        title: val.title,
-        category: val.category,
-        body: val.body.substr(0,100),
-        createdAt: val.createdAt,
-        autor: val.autor
-    }));
+        const iniciosobre = inicioSobre.data.map(({ inicio, sobre, contato }) => ({
+            inicio,
+            sobre,
+            contato
+        }));
 
-    postLimit.reverse();
-    const nLimit = postLimit.slice(0, 4);
+        const linkscontato = linksContato.data.map(({ img, title, url }) => ({
+            img,
+            title,
+            url
+        }));
+        
+        const postLimit = noticia2.data.map(({ _id, title, category, body, createdAt, autor }) => ({
+            id: _id,
+            title,
+            category,
+            body: body.substr(0, 100),
+            createdAt,
+            autor
+        }));
 
-    let searchTerm = req.body.searchTerm;
-    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
+        postLimit.reverse();
+        const nLimit = postLimit.slice(0, 4);
 
-    const data = await Noticias.find({
-    $or: [
-        { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
-        { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }}
-    ]
-    });
+        let searchTerm = req.body.searchTerm;
+        const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
 
-    if(data.length === 0){
-        res.redirect('/blog')
-    }else{
-        res.render("search", {data, data_iniciosobre:iniciosobre, contat:linkscontato, nLimit});
+        const data = await Noticias.find({
+            $or: [
+                { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+                { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }}
+            ]
+        });
+
+        if (data.length === 0) {
+            return res.redirect('/blog');
+        }
+
+        res.render("search", { data, data_iniciosobre: iniciosobre, contat: linkscontato, nLimit });
+    } catch (error) {
+        console.error(error);
     }
 });
 app.get('/enviado', async (req, res) =>{
