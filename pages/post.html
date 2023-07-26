@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <%- include('partials/head.html') %>
-    <title>postesn.title Blog | Casa de Adoração</title>
+    <title><%= postesn.title %> Blog | Casa de Adoração</title>
 </head>
 <body>
     <%- include('./partials/components/header.html') %>
@@ -11,6 +11,7 @@
       <div class="content-container">
         <div class="card-post">
           <a href="/blog" class="voltar"><img src="../public/img/svgs/back.svg" alt=""> Voltar</a>
+          <p>Categoria: <%= postesn.category %></p>
           <h1><%= postesn.title %></h1>
           <p><%= postesn.createdAt %> por <%= postesn.autor %></p>
           <p class="conteudo-descricao"><%- postesn.body %></p>
