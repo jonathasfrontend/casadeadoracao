@@ -194,36 +194,37 @@ app.get('/blog',async (req, res) => {
     res.render('blog', {data_iniciosobre:iniciosobre, contat:linkscontato, post, nLimit});
 })
 app.get('/blog/:id', async (req, res) => {
-    const responseSobre = await axios.get(process.env.URL_API_INICIO_SOBRE)
-    const iniciosobre = responseSobre.data.map(function(val){
-        return {
-            inicio: val.inicio,
-            sobre: val.sobre,
-            contato: val.contato
+    try {
+        const [responseSobre, responseLinksContato] = await Promise.all([
+            axios.get(process.env.URL_API_INICIO_SOBRE),
+            axios.get(process.env.URL_API_LINKS_CONTATO)
+        ]);
+
+        const iniciosobre = responseSobre.data.map(({ inicio, sobre, contato }) => ({
+            inicio,
+            sobre,
+            contato
+        }));
+
+        const linkscontato = responseLinksContato.data.map(({ img, title, url }) => ({
+            img,
+            title,
+            url
+        }));
+
+        const slug = req.params.id;
+        const postesn = await Noticias.findById(slug, { body: 1, title: 1 });
+
+        if (postesn) {
+            postesn.body = detectarLinks(postesn.body);
+            res.render('post', { data_iniciosobre: iniciosobre, contat: linkscontato, postesn });
+        } else {
+            res.status(404).render('404');
         }
-    })
-
-    const responseLinksContato = await axios.get(process.env.URL_API_LINKS_CONTATO)
-    const linkscontato = responseLinksContato.data.map(function(val){
-        return {
-            img: val.img,
-            title: val.title,
-            url: val.url
-        }
-    })
-
-    let slug = req.params.id;
-    const postesn = await Noticias.findById({ _id: slug });
-
-    
-    if (postesn != null) {    
-        postesn.body = detectarLinks(postesn.body);
-        res.render('post',{data_iniciosobre:iniciosobre, contat:linkscontato, postesn});
-    }else{
-        res.status(404).render('404');
+    } catch (error) {
+        console.error(error);
     }
-    
-})
+});
 app.post('/blog/search', async (req, res) => {
     const inicioSobre = await axios.get(process.env.URL_API_INICIO_SOBRE);
     const iniciosobre = inicioSobre.data.map(val => ({
