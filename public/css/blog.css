@@ -36,11 +36,8 @@
   font-weight: 800;
   color: #000000;
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
   font-family: 'Ubuntu Condensed', sans-serif;
-}
-.container-noticia .content-container .card a h1 p{
-  margin-left: 5px;
 }
 .container-noticia .content-container .card a h1:hover{
   text-decoration: underline;

@@ -131,6 +131,9 @@
     .container-noticia .content-container .card a p{
         width: 140px;
     }
+    .container-noticia .content-container{
+        width: 100% !important;
+      }
 }
 @media (max-width: 720px){
     .container-noticia .containernoticiasrecentesmain{
