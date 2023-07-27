@@ -11,32 +11,31 @@ const app = express();
 function ehImagem(url) {
     const extensoesImagem = ['.jpg', '.jpeg', '.png', '.gif', '.svg', '.webp'];
     return extensoesImagem.some((extensao) => url.toLowerCase().endsWith(extensao));
-  }
-  function detectarLinks(texto) {
-    const tokens = linkify.find(texto);
-    let linkedText = '';
-  
-    let lastIndex = 0;
-    for (const token of tokens) {
-      if (token.type === 'url') {
-        const linkContent = texto.substring(lastIndex, token.start);
-        if (linkContent.trim() !== '') {
-          linkedText += linkContent;
-        }
-  
-        if (ehImagem(token.href)) {
-          linkedText += `<img src="${token.href}" alt="Imagem" />`;
-        } else {
-          linkedText += `<a href="${token.href}" target="_blank">${token.value}</a>`;
-        }
-        lastIndex = token.end;
-      }
+}
+function detectarLinks(texto) {
+const tokens = linkify.find(texto);
+let linkedText = '';
+
+let lastIndex = 0;
+for (const token of tokens) {
+    if (token.type === 'url') {
+    const linkContent = texto.substring(lastIndex, token.start);
+    if (linkContent.trim() !== '') {
+        linkedText += linkContent;
     }
-    linkedText += texto.substring(lastIndex);
-  
-    return linkedText;
-  }
-  
+
+    if (ehImagem(token.href)) {
+        linkedText += `<img src="${token.href}" alt="Imagem" />`;
+    } else {
+        linkedText += `<a href="${token.href}" target="_blank">${token.value}</a>`;
+    }
+    lastIndex = token.end;
+    }
+}
+linkedText += texto.substring(lastIndex);
+
+return linkedText;
+}
 
 require('dotenv').config();
 app.use( bodyParser.json() );
@@ -221,55 +220,57 @@ app.get('/blog/:id', async (req, res) => {
     }
 });
 app.post('/blog/search', async (req, res) => {
-    try {
-        const [inicioSobre, linksContato, noticia2] = await Promise.all([
-            axios.get(process.env.URL_API_INICIO_SOBRE),
-            axios.get(process.env.URL_API_LINKS_CONTATO),
-            axios.get(process.env.URL_NOTICIA_GET_MONGO)
-        ]);
+try {
+    const [inicioSobre, linksContato, noticia2] = await Promise.all([
+        axios.get(process.env.URL_API_INICIO_SOBRE),
+        axios.get(process.env.URL_API_LINKS_CONTATO),
+        axios.get(process.env.URL_NOTICIA_GET_MONGO)
+    ]);
 
-        const iniciosobre = inicioSobre.data.map(({ inicio, sobre, contato }) => ({
-            inicio,
-            sobre,
-            contato
-        }));
+    const iniciosobre = inicioSobre.data.map(({ inicio, sobre, contato }) => ({
+        inicio,
+        sobre,
+        contato
+    }));
 
-        const linkscontato = linksContato.data.map(({ img, title, url }) => ({
-            img,
-            title,
-            url
-        }));
-        
-        const postLimit = noticia2.data.map(({ _id, title, category, body, createdAt, autor }) => ({
-            id: _id,
-            title,
-            category,
-            body: body.substr(0, 100),
-            createdAt,
-            autor
-        }));
+    const linkscontato = linksContato.data.map(({ img, title, url }) => ({
+        img,
+        title,
+        url
+    }));
+    
+    const postLimit = noticia2.data.map(({ _id, title, category, body, createdAt, autor }) => ({
+        id: _id,
+        title,
+        category,
+        body: body.substr(0, 200),
+        createdAt,
+        autor
+    }));
 
-        postLimit.reverse();
-        const nLimit = postLimit.slice(0, 4);
+    postLimit.reverse();
+    const nLimit = postLimit.slice(0, 4);
 
-        let searchTerm = req.body.searchTerm;
-        const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+    let searchTerm = req.body.searchTerm;
+    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
 
-        const data = await Noticias.find({
-            $or: [
-                { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
-                { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }}
-            ]
-        });
+    const data = await Noticias.find({
+        $or: [
+            { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+            { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+            { autor: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+            { category: { $regex: new RegExp(searchNoSpecialChar, 'i') }}
+        ]
+    });
 
-        if (data.length === 0) {
-            return res.redirect('/blog');
-        }
-
-        res.render("search", { data, data_iniciosobre: iniciosobre, contat: linkscontato, nLimit });
-    } catch (error) {
-        console.error(error);
+    if (data.length === 0) {
+        return res.redirect('/blog');
     }
+
+    res.render("search", { data, data_iniciosobre: iniciosobre, contat: linkscontato, nLimit });
+} catch (error) {
+    console.error(error);
+}
 });
 app.get('/enviado', async (req, res) =>{
     try {
