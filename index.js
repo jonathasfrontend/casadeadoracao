@@ -179,7 +179,8 @@ app.get('/blog', async (req, res) => {
             createdAt,
             autor
         }));
-
+        
+        post.reverse();
         const postLimit = post.slice(0, 4);
 
         res.render('blog', { data_iniciosobre: iniciosobre, contat: linkscontato, post, nLimit: postLimit });
