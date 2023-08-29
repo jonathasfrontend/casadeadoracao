@@ -151,6 +151,20 @@ app.post('/pedidosdeoracao',async (req, res) => {
       await axios.post(process.env.URL_PEDIDOS_POST_MONGODB, data);
       res.redirect('/enviado')
 })
+app.post('/contatos',async (req, res) => {
+    try {
+        const data = {
+            name: req.body.name,
+            number: req.body.number,
+            menssagem: req.body.menssagem,
+            };
+        await axios.post(process.env.URL_CONTATOS_POST_MONGO, data);
+        res.redirect('/enviado')
+    } catch (error) {
+        console.log(error)
+    }
+    
+})
 app.get('/blog', async (req, res) => {
     try {
         const [inicioSobre, linksContato, noticia] = await Promise.all([

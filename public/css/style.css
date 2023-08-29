@@ -228,15 +228,15 @@
     align-items: center;
 }
 .contato .container-contato .left .content-links a img{
-    width: 25px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
     filter: invert(1);
 }
 .contato .container-contato .left .content-links a h4{
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #ffffff;
 }

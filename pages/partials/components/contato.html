@@ -10,21 +10,15 @@
             </div>
         </div>
         <div class="rigth">                
-            <form action="https://api.staticforms.xyz/submit" method="post">
+            <form method="POST" action="/contatos">
                 <div class="forminputs">
                     <input type="text" name="name" placeholder="Nome">
-                    <input type="text" name="email" placeholder="Email" />
+                    <input type="number" name="number" placeholder="Telefone" />
                 </div>
-                <input type="text" class="message" placeholder="Sua Objeção" required="" name="message">
+                <input type="text" class="message" placeholder="Sua menssagem" required="" name="menssagem">
                 <div class="formbtns">
                     <input type="submit" value="Enviar">
-                    <input type="reset" value="Limpar">
                 </div>
-                <input type="text" name="honeypot" style="display:none">
-                <input type="hidden" name="accessKey" value="34137d04-3fc9-4f97-a089-4df80829bfbc">
-                <input type="hidden" name="subject" value="Voce tem uma nova menssagem do site!" />
-                <input type="hidden" name="replyTo" value="@">
-                <input type="hidden" name="redirectTo" value="/enviado">
             </form>
         </div>
     </div>
