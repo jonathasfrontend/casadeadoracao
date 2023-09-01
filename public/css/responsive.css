@@ -198,13 +198,6 @@
     }
 }
 @media (max-width: 1110px){
-    .projetos .container-projetos{
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-    .projetos .container-projetos .card-projetos{
-        max-width: 100% !important;
-        min-width: 100% !important;
-    }
     .galeria .container-galeria{
         grid-template-columns: repeat(3, 1fr) !important;
     }
@@ -224,13 +217,6 @@
     }
 }
 @media (max-width: 850px){
-    .projetos .container-projetos{
-        grid-template-columns: repeat(1, 1fr) !important;
-    }
-    .projetos .container-projetos .card-projetos{
-        max-width: 100% !important;
-        min-width: 100% !important;
-    }
     .contato .container-contato{
         width: 100% !important;
         height: 100% !important;
