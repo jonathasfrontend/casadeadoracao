@@ -246,10 +246,11 @@ app.get('/blog/:id', async (req, res) => {
 });
 app.post('/blog/search', async (req, res) => {
 try {
-    const [inicioSobre, linksContato, noticia2] = await Promise.all([
+    const [inicioSobre, linksContato, noticia2, categoria] = await Promise.all([
         axios.get(process.env.URL_API_INICIO_SOBRE),
         axios.get(process.env.URL_API_LINKS_CONTATO),
-        axios.get(process.env.URL_NOTICIA_GET_MONGO)
+        axios.get(process.env.URL_NOTICIA_GET_MONGO),
+        axios.get(process.env.URL_GET_CATEGORIA_MONGO),
     ]);
 
     const iniciosobre = inicioSobre.data.map(({ inicio, sobre, contato }) => ({
@@ -264,13 +265,19 @@ try {
         url
     }));
     
-    const postLimit = noticia2.data.map(({ _id, title, category, body, createdAt, autor }) => ({
+    const postLimit = noticia2.data.map(({ _id, title, category, body, createdAt, autor, views }) => ({
         id: _id,
         title,
         category,
         body: body.substr(0, 200),
         createdAt,
-        autor
+        autor,
+        views
+    }));
+
+    const getCategoria = categoria.data.map(({ _id, categoria }) => ({
+        id: _id,
+        categoria,
     }));
 
     postLimit.reverse();
@@ -292,7 +299,7 @@ try {
         return res.redirect('/blog');
     }
 
-    res.render("search", { data, data_iniciosobre: iniciosobre, contat: linkscontato, nLimit });
+    res.render("search", { data, data_iniciosobre: iniciosobre, contat: linkscontato, nLimit, getCategoria });
 } catch (error) {
     console.error(error);
 }

@@ -12,7 +12,10 @@
       <% data.forEach(post => { %>
         <div class="card">
           <a href="/blog/<%= post.id %>">
-            <h1><%= post.title %></h1>
+            <h1>
+              <%= post.title %> 
+              <p>Categoria: <%= post.category %> <span><img src="../public/img/svgs/views.svg" alt=""> <%= post.views %></span></p>
+            </h1>
             <p><%= post.createdAt %> por: <strong><%= post.autor %></strong></p>
           </a>
           <p class="conteudo"><%- post.body %> <strong>...</strong></p>
@@ -40,6 +43,17 @@
               </div>
           <% }%>
       </div>
+
+      <div class="categoria">
+        <h1>Categoria</h1>
+        <div class="content-categoria">
+            <% for(let i = 0; i < getCategoria.length; i++) { %>
+            <button>
+                <%- getCategoria[i].categoria %>
+            </button>
+            <% }%>
+        </div>
+    </div>
   </div>
   </section>
 

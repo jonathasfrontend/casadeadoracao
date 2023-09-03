@@ -294,11 +294,66 @@
   color: #000000;
   font-family:'Courier New', Courier, monospace;
 }
+.container-search .content-container .card a p{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 300;
+  color: #000000;
+  font-family:'Courier New', Courier, monospace;
+}
+.container-search .content-container .card h1 p span{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 300;
+  color: #000000;
+  font-family:'Courier New', Courier, monospace;
+}
+.container-search .content-container .card h1 p span img{
+  width: 15px;
+  height: 15px;
+  margin-right: 3px;
+}
 .container-search .content-container .card .conteudo{
   font-size: 16px;
   font-weight: 300;
   text-align: justify;
   font-family: 'Roboto', sans-serif;
+}
+
+.container-search .containernoticiasrecentesmain .categoria{
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff7a;
+  backdrop-filter: blur(20px);
+  border-radius: 4px;
+  padding: 15px;
+}
+.container-search .containernoticiasrecentesmain .categoria h1{
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.container-search .containernoticiasrecentesmain .categoria .content-categoria{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.container-search .containernoticiasrecentesmain .categoria .content-categoria button{
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: #ffffff7a;
+  backdrop-filter: blur(20px);
+  color: #000000;
+  padding: 5px;
+  margin: 3px;
+  border-radius: 4px;
 }
 
 /* noticias recentes ##################################### */
@@ -351,6 +406,7 @@
   backdrop-filter: blur(20px);
   border-radius: 4px;
   padding: 15px;
+  margin-bottom: 10px;
 }
 .container-search .containernoticiasrecentesmain .container-noticias-recentes .titulo{
   font-size: 1.5em;
