@@ -11,7 +11,10 @@
             <% for(let i = 0; i < post.length; i++) { %>
                 <div class="card">
                     <a href="/blog/<%= post[i].id %>">
-                        <h1><%= post[i].title %> <p>Categoria: <%= post[i].category %></p></h1>
+                        <h1>
+                            <%= post[i].title %> 
+                            <p>Categoria: <%= post[i].category %> <span><img src="../public/img/svgs/views.svg" alt=""> <%= post[i].views %></span></p>
+                        </h1>
                         <p><%= post[i].createdAt %> por: <strong><%= post[i].autor %></strong></p>
                     </a>
                     <p class="conteudo"><%- post[i].body %> ...</p>
@@ -22,7 +25,7 @@
         <div class="containernoticiasrecentesmain">
             <div class="search">
                 <form action="/blog/search" method="post" class="search__form" role="search">
-                    <input type="search" aria-label="Seach" id="searchInput" name="searchTerm" placeholder="Pesquise...">
+                    <input type="search" aria-label="Seach" id="searchInput" name="search" placeholder="Pesquise...">
                     <button type="submit"><img src="../public/img/svgs/search.svg" alt=""></button>
                 </form>
             </div>
@@ -39,6 +42,18 @@
                     </div>
                 <% }%>
             </div>
+
+            <div class="categoria">
+                <h1>Categoria</h1>
+                <div class="content-categoria">
+                    <% for(let i = 0; i < getCategoria.length; i++) { %>
+                    <button>
+                        <%- getCategoria[i].categoria %>
+                    </button>
+                    <% }%>
+                </div>
+            </div>
+
         </div>
     </main>
 

@@ -24,6 +24,10 @@ const PostSchema = new mongoose.Schema(
     createdAt:{
       type: String,
       default: data
+    },
+    views: {
+      type: Number,
+      default: 0 
     }
 });
 

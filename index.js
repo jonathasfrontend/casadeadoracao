@@ -165,12 +165,14 @@ app.post('/contatos',async (req, res) => {
     }
     
 })
+
 app.get('/blog', async (req, res) => {
     try {
-        const [inicioSobre, linksContato, noticia] = await Promise.all([
+        const [inicioSobre, linksContato, noticia, categoria] = await Promise.all([
             axios.get(process.env.URL_API_INICIO_SOBRE),
             axios.get(process.env.URL_API_LINKS_CONTATO),
-            axios.get(process.env.URL_NOTICIA_GET_MONGO)
+            axios.get(process.env.URL_NOTICIA_GET_MONGO),
+            axios.get(process.env.URL_GET_CATEGORIA_MONGO),
         ]);
 
         const iniciosobre = inicioSobre.data.map(({ inicio, sobre, contato }) => ({
@@ -185,19 +187,25 @@ app.get('/blog', async (req, res) => {
             url
         }));
 
-        const post = noticia.data.map(({ _id, title, category, body, createdAt, autor }) => ({
+        const post = noticia.data.map(({ _id, title, category, body, createdAt, autor, views }) => ({
             id: _id,
             title,
             category,
             body: body.substr(0, 200),
             createdAt,
-            autor
+            autor,
+            views
         }));
         
+        const getCategoria = categoria.data.map(({ _id, categoria }) => ({
+            id: _id,
+            categoria,
+        }));
+
         post.reverse();
         const postLimit = post.slice(0, 4);
 
-        res.render('blog', { data_iniciosobre: iniciosobre, contat: linkscontato, post, nLimit: postLimit });
+        res.render('blog', { data_iniciosobre: iniciosobre, contat: linkscontato, post, nLimit: postLimit, getCategoria });
     } catch (error) {
         console.error(error);
     }
@@ -225,6 +233,8 @@ app.get('/blog/:id', async (req, res) => {
         const postesn = await Noticias.findById({ _id: slug });
 
         if (postesn) {
+            postesn.views++;
+            postesn.save();
             postesn.body = detectarLinks(postesn.body);
             res.render('post', { data_iniciosobre: iniciosobre, contat: linkscontato, postesn });
         } else {
@@ -266,8 +276,8 @@ try {
     postLimit.reverse();
     const nLimit = postLimit.slice(0, 4);
 
-    let searchTerm = req.body.searchTerm;
-    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+    let search = req.body.search;
+    const searchNoSpecialChar = search.replace(/[^a-zA-Z0-9 ]/g, "");
 
     const data = await Noticias.find({
         $or: [
@@ -287,6 +297,7 @@ try {
     console.error(error);
 }
 });
+
 app.get('/enviado', async (req, res) =>{
     try {
         const response = await axios.get(process.env.URL_API_INICIO_SOBRE);
@@ -346,6 +357,6 @@ app.use(function(req, res, next) {
     res.status(404).render('404');
 });
 
-app.listen(process.env.PORT || 4000,()=>{
-    console.log('server rodando na porta 4000');
+app.listen(process.env.PORT || 3000,()=>{
+    console.log('server rodando na porta 3000');
 })
