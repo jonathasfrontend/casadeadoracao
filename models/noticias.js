@@ -28,7 +28,7 @@ const PostSchema = new mongoose.Schema(
     views: {
       type: Number,
       default: 0 
-    }
+    },
 });
 
 module.exports = mongoose.model('noticias', PostSchema);

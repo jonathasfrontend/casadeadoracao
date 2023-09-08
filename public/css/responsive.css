@@ -216,6 +216,20 @@
         height: 100% !important;
     }
 }
+@media (max-width: 800px){
+    .container-noticia-post form .content-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-noticia-post form .content-form .left{
+        width: 100% !important;
+    }
+    .container-noticia-post form .content-form .right{
+        width: 100% !important;
+      }
+}
 @media (max-width: 850px){
     .contato .container-contato{
         width: 100% !important;

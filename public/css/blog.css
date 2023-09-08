@@ -72,59 +72,6 @@
   margin-right: 3px;
 }
 
-/* post ################################################# */
-
-.container-noticia-post .content-container{
-  width: 100%;
-  height: 100%;
-  display: block;
-  margin-top: 4em;
-}
-.container-noticia-post .content-container .card-post{
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff7a;
-  backdrop-filter: blur(20px);
-  border-radius: 4px;
-  padding: 15px;
-}
-.container-noticia-post .content-container .card-post .voltar{
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #000000;
-  font-size: 16px;
-  font-weight: 800;
-}
-.container-noticia-post .content-container .card-post .voltar img{
-  width: 20px;
-  height: 20px;
-}
-.container-noticia-post .content-container .card-post h1{
-  font-size: 3em;
-  font-weight: 700;
-  margin: 20px 0;
-  font-family: 'Ubuntu Condensed', sans-serif;
-}
-.container-noticia-post .content-container .card-post p{
-  font-size: 1em;
-  font-weight: 500;
-  
-  font-family:'Courier New', Courier, monospace;
-}
-.container-noticia-post .content-container .card-post .conteudo-descricao{
-  font-size: 1.1em;
-  font-weight: 400;
-  margin: 20px 0;
-  font-family: 'Roboto', sans-serif;
-}
-.container-noticia-post .content-container .card-post .conteudo-descricao img{
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
 /* noticias recentes ################################################# */
 
 .container-noticia .containernoticiasrecentesmain{

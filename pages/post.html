@@ -17,6 +17,33 @@
           <p class="conteudo-descricao"><%- postesn.body %></p>
         </div>
       </div>
+
+      <form action="/blog/<%= postesn._id %>/comment" method="POST">
+        <h2>Adicionar Comentário</h2>
+        <div class="content-form">
+          <div class="left">
+            <textarea id="comment" name="comment" rows="4" required placeholder="Comentário"></textarea>
+          </div>
+          <div class="right">
+            <input type="text" id="name" name="name" required placeholder="Nome">
+            <input type="submit" value="Enviar Comentário">
+          </div>
+        </div>
+      </form>
+
+      <div class="comment">
+        <h2>Comentários</h2>
+        <% comments.forEach(comment => { %>
+          <div class="card">
+            <div class="title"> 
+              <h3><%= comment.name %>:</h3> 
+              <span><%= comment.createdAt %></span>
+            </div>
+            <p><%= comment.comment %></p>
+          </div>
+        <% }); %>
+      </div>
+
   </main>
 
     <%- include('./partials/components/contato.html') %>

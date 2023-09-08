@@ -3,9 +3,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios');
 const mongoose = require('mongoose')
+const uuid = require('uuid');
 const linkify = require('linkifyjs');
 const Noticias = require('./models/noticias')
+const Comment = require('./models/comment')
 
+const port = 3000;
 const app = express();
 
 function ehImagem(url) {
@@ -165,7 +168,6 @@ app.post('/contatos',async (req, res) => {
     }
     
 })
-
 app.get('/blog', async (req, res) => {
     try {
         const [inicioSobre, linksContato, noticia, categoria] = await Promise.all([
@@ -236,12 +238,31 @@ app.get('/blog/:id', async (req, res) => {
             postesn.views++;
             postesn.save();
             postesn.body = detectarLinks(postesn.body);
-            res.render('post', { data_iniciosobre: iniciosobre, contat: linkscontato, postesn });
+
+            const comments = await Comment.find({ postId: slug });
+            comments.reverse();
+            res.render('post', { data_iniciosobre: iniciosobre, contat: linkscontato, postesn, comments });
         } else {
             res.status(404).render('404');
         }
     } catch (error) {
         console.error(error);
+    }
+});
+app.post('/blog/:id/comment', async (req, res) => {
+    const slug = req.params.id;
+    const { name, comment } = req.body;
+    const newComment = new Comment({ name, comment, postId: slug, _id: uuid.v4() });
+
+    try {
+        // Salvar o comentário no banco de dados
+        await newComment.save();
+
+        // Redirecionar de volta à página do post após salvar o comentário
+        res.redirect(`/blog/${slug}`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao adicionar o comentário.' });
     }
 });
 app.post('/blog/search', async (req, res) => {
@@ -304,7 +325,6 @@ try {
     console.error(error);
 }
 });
-
 app.get('/enviado', async (req, res) =>{
     try {
         const response = await axios.get(process.env.URL_API_INICIO_SOBRE);
@@ -364,6 +384,6 @@ app.use(function(req, res, next) {
     res.status(404).render('404');
 });
 
-app.listen(process.env.PORT || 3000,()=>{
-    console.log('server rodando na porta 3000');
+app.listen(process.env.PORT || port,()=>{
+    console.log(`server rodando na porta ${port}`);
 })
