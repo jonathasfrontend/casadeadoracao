@@ -70,7 +70,8 @@
     .pedido,
     /* noticias e eventos*/
     .container-noticia,
-    .container-noticia-post{
+    .container-noticia-post,
+    .container-cursom{
         width: 100% !important;
         height: 100% !important;
         display: flex !important;
