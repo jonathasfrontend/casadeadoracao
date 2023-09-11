@@ -376,8 +376,8 @@ app.post('/cursodemembresia', async (req, res) =>{
 });
 
 mongoose.connect('mongodb+srv://root:Jonathas001@cluster0.vmkcvsj.mongodb.net/?retryWrites=true&w=majority')
-.then(()=>{console.log("bd connected")})
-.catch(()=>{console.log("Deu ruin")});
+.then(()=>{console.log("Banco de dados conectado!")})
+.catch(()=>{console.log("Falha ao conectar com o banco!")});
 
 
 app.use(function(req, res, next) {
@@ -385,5 +385,5 @@ app.use(function(req, res, next) {
 });
 
 app.listen(process.env.PORT || port,()=>{
-    console.log(`server rodando na porta ${port}`);
+    console.log(`Aplicação rodando, porta:${port}`);
 })
