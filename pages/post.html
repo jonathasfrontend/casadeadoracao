@@ -10,7 +10,11 @@
     <main class="container-noticia-post">
       <div class="content-container">
         <div class="card-post">
-          <a href="/blog" class="voltar"><img src="../public/img/svgs/back.svg" alt="">Voltar</a>
+          <div class="links-content">
+            <a href="/blog" class="voltar"><img src="../public/img/svgs/back.svg" alt="">Voltar</a>
+            <a href="/blog/<%= postesn._id %>" id="copylink"></a>
+            <button class="compartilhar">Compartilhar<img src="../public/img/svgs/share.svg" alt=""></button>
+          </div>
           <h1><%= postesn.title %></h1>
           <p>Categoria: <strong><%= postesn.category %></strong></p>
           <p><i><%= postesn.createdAt %></i> por: <strong><%= postesn.autor %></strong></p>
@@ -51,5 +55,22 @@
     
     <script src="../public/js/main.js"></script>
     <script src="../public/js/script.js"></script>
+
+    <script>
+      const buttonCopy = document.querySelector('.compartilhar');
+      buttonCopy.addEventListener('click', ()=>{
+          const linkElement = document.getElementById("copylink");
+          const tempInput = document.createElement("input");
+          tempInput.value = linkElement.href;
+          document.body.appendChild(tempInput);
+          
+          tempInput.select();
+          tempInput.setSelectionRange(0, 99999);
+          
+          document.execCommand("copy");
+          
+          alert("Link copiado!");
+      })
+    </script>
 </body>
 </html>

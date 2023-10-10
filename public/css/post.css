@@ -15,6 +15,35 @@
   border-radius: 4px;
   padding: 15px;
 }
+.container-noticia-post .content-container .card-post .links-content{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container-noticia-post .content-container .card-post .links-content .compartilhar{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 800;
+}
+.container-noticia-post .content-container .card-post .links-content .compartilhar img{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+.container-noticia-post .content-container .card-post .links-content .compartilhar:hover{
+  transform: scale(0.97); 
+}
+
 .container-noticia-post .content-container .card-post .voltar{
   display: flex;
   align-items: center;
